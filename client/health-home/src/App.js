@@ -1,8 +1,11 @@
 import "./App.css";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-blue-200">Hello world!</h1>
+    <div className="bg-bgprimary">
+      <LandingPage></LandingPage>
+    </div>
   );
 }
 
