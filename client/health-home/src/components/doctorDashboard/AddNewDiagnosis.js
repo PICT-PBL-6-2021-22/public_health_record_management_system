@@ -100,8 +100,6 @@ const AddNewDiagnosis = () => {
                                     </div>
                                     
 
-                                    
-
                                 </div>
                                 <div className="col-span-3">
                                     <h1>Dosages</h1>
@@ -134,7 +132,6 @@ const AddNewDiagnosis = () => {
                                         </select>
                                     </div>
                                     
-
                                 </div>
                                 <div>
                                     <h1>jayesh</h1>
