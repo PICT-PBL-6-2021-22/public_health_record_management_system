@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import profile from "../../assets/img/landingPage/profile.png";
 
 export default function Login() {
   const [Toggle, setToggle] = useState("Patient");
 
   return (
-    <div className="bg-white flex flex-col justify-items-center items-center py-4 px-4 rounded shadow-md w-3/4  my-7 ml-auto ">
+    <div className="bg-white flex flex-col justify-items-center items-center py-4 px-4 rounded shadow-md lg:w-3/4 w-full my-7 ml-auto ">
       <h1 className="text-3xl font-bold font-poppins text-primary py-5">
         Login
       </h1>
@@ -21,7 +22,6 @@ export default function Login() {
           Patient
         </button>
         <button
-          className="py-2 px-8 text-lg font-poppins font-semibold cursor-pointer rounded"
           onClick={() => setToggle("Doctor")}
           className={
             Toggle === "Doctor"
@@ -32,7 +32,6 @@ export default function Login() {
           Doctor
         </button>
         <button
-          className="py-2 px-8 text-lg font-poppins font-semibold cursor-pointer rounded"
           onClick={() => setToggle("Admin")}
           className={
             Toggle === "Admin"
@@ -59,7 +58,7 @@ export default function Login() {
           type="text"
           name="username"
           id="username"
-          className="font-poppins px-3 py-2 bg-bgsecondary rounded"
+          className="font-poppins px-3 py-2 bg-bgsecondary rounded outline-none"
         />
         <label
           htmlFor="password"
@@ -71,13 +70,36 @@ export default function Login() {
           type="password"
           name="password"
           id="password"
-          className="font-poppins px-3 py-2 bg-bgsecondary rounded"
+          className="font-poppins px-3 py-2 bg-bgsecondary rounded outline-none"
         />
-        <button className="text-lg mt-10 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
-          Submit
-        </button>
+        <Link
+          to="/patient/dashboard"
+          className={Toggle === "Patient" ? " flex justify-center" : "hidden"}
+        >
+          <button className="text-lg mt-10  bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
+            Submit
+          </button>
+        </Link>
+        <Link
+          to="/doctor/dashboard"
+          className={Toggle === "Doctor" ? "flex justify-center" : "hidden"}
+        >
+          <button className="text-lg mt-10 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
+            Submit
+          </button>
+        </Link>
+        <Link
+          to="/admin/dashboard"
+          className={Toggle === "Admin" ? "flex justify-center" : "hidden"}
+        >
+          <button className="text-lg mt-10 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
+            Submit
+          </button>
+        </Link>
       </form>
-      <h1 className="font-poppins text-base pt-5">New User, Register here</h1>
+      <h1 className="font-poppins text-base pt-5">
+        New User, <Link to="/Register">Register here</Link>
+      </h1>
     </div>
   );
 }

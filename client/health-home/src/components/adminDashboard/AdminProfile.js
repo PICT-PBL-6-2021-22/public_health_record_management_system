@@ -1,6 +1,13 @@
+import Navbar from "../landingPage/Navbar";
+
+
+
 const AdminProfile = () => {
     return ( 
-        <h1>hello admin</h1>
+        <div>
+            {/* <Navbar></Navbar> */}
+            <h1>jayesh patil...</h1>
+        </div>
      );
 }
  

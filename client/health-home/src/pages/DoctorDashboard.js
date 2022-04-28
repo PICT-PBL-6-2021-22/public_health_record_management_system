@@ -6,26 +6,27 @@ import add_pre_logo from "../assets/img/dashboard/add_prescription_logo.png";
 import Footer from "../components/landingPage/Footer";
 import eye from "../assets/img/dashboard/eye.png";
 import Sidebar from '../components/doctorDashboard/DashboardSidebar'
+import { Link } from "react-router-dom";
 
 
 
 
 const DoctorDashboard = () => {
   return (
-    <div className="full-body">
-      <div className="body-without-footer  grid grid-cols-6 h-screen max-h-min bg-bgprimary ">
+    <div className="full-body col-span-10 h-screen">
+      <div className="body-without-footer   bg-bgprimary ">
         {/* side bar start */}
 
-        <Sidebar></Sidebar>
-        
+        {/* <Sidebar></Sidebar> */}
+
         {/* side bar end  */}
 
         {/*main dashboard start */}
 
-        <div className="main  col-start-2 col-end-7 m-2  ">
+        <div className="main    m-2  ">
           {/* dashboard today start */}
           <div className="">
-            <div className="flex  h-12 m-2 bg-bgprimary rounded  ">
+            <div className="flex  h-12 m-2 bg-bgprimary rounded mt-4 ">
               <div>
                 <h1 className="text-2xl font-poppins font-bold p-2 ">
                   DashBoard Today
@@ -42,20 +43,22 @@ const DoctorDashboard = () => {
                 </div>
               </div>
 
-              <div className="flex bg-white rounded shadow  px-4  ml-60 h-14 ">
-                <img
-                  src={doctor_profile}
-                  className="w-12 p-1 rounded-2xl"
-                ></img>
-                <div className="grid grid-rows-2 ml-4 gap-2  mb-4">
-                  <div className="font-bold font-poppins text-base">
-                    <h1 className="">Dr.amar akbar</h1>
-                  </div>
-                  <div className="">
-                    <h2 className="text-sm">heart specialist</h2>
+              <Link to="/doctor/profile">
+                <div className="flex bg-white rounded shadow  px-4  ml-60 h-14 ">
+                  <img
+                    src={doctor_profile}
+                    className="w-12 p-1 rounded-2xl"
+                  ></img>
+                  <div className="grid grid-rows-2 ml-4 gap-2  mb-4">
+                    <div className="font-bold font-poppins text-base">
+                      <h1 className="">Dr.amar akbar</h1>
+                    </div>
+                    <div className="">
+                      <h2 className="text-sm">heart specialist</h2>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
           {/* dashboard today end */}
@@ -65,7 +68,6 @@ const DoctorDashboard = () => {
           <div className="grid grid-cols-7 bg-white rounded p-4 ml-12 mr-8 mt-4 shadow">
             <div className="grid col-start-1 col-span-3">
               <h1 className="text-xl font-poppins font-bold p-2 ">
-                
                 Search Patient By Health Id :
               </h1>
             </div>
@@ -160,13 +162,15 @@ const DoctorDashboard = () => {
                     <h1>fever</h1>
                   </div>
                 </div>
-                <div className=" mt-2 flex items-center justify-evenly text-base bg-primary py-1 px-2 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-5/12  ">
-                  <img src={reports} className="h-4"></img>
+                <Link to="/doctor/prescription">
+                  <div className=" mt-2 flex items-center justify-evenly text-base bg-primary py-1 px-2 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-5/12  ">
+                    <img src={reports} className="h-4"></img>
 
-                  <button className=" font-semibold pl-1">
-                    Preview Prescription
-                  </button>
-                </div>
+                    <button className=" font-semibold pl-1">
+                      Preview Prescription
+                    </button>
+                  </div>
+                </Link>
               </div>
             </div>
             {/* recent health check up end */}
@@ -181,11 +185,13 @@ const DoctorDashboard = () => {
               <div className="font-bold text-xl ml-4">
                 <h1>Patient Dashboard</h1>
               </div>
-              <div className=" flex  bg-primary pl-0 pr-3 py-1 items-center justify-items-center  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary   ">
-                <img src={add_pre_logo} className="h-3 mx-3"></img>
+              <Link to="/doctor/addDiagno">
+                <div className=" flex  bg-primary pl-0 pr-3 py-1 items-center justify-items-center  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary   ">
+                  <img src={add_pre_logo} className="h-3 mx-3"></img>
 
-                <button className="font-semibold ">Add New Diagnosis</button>
-              </div>
+                  <button className="font-semibold ">Add New Diagnosis</button>
+                </div>
+              </Link>
             </div>
             <div className="bg-white m-4 rounded-lg ">
               <div className="grid grid-rows-2 p-6 gap-2 shadow">
@@ -219,10 +225,12 @@ const DoctorDashboard = () => {
                   <div>
                     <h1>fever</h1>
                   </div>
-                  <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                    <img src={eye} className="h-4 my-auto"></img>
-                    <button className="font-bold ml-2">Preview </button>
-                  </div>
+                  <Link to="/doctor/prescription">
+                    <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
+                      <img src={eye} className="h-4 my-auto"></img>
+                      <button className="font-bold ml-2">Preview </button>
+                    </div>
+                  </Link>
                 </div>
 
                 <div className="grid grid-cols-4">
@@ -236,10 +244,12 @@ const DoctorDashboard = () => {
                   <div>
                     <h1>Cold</h1>
                   </div>
-                  <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                    <img src={eye} className="h-4 my-auto"></img>
-                    <button className="font-bold ml-2">Preview </button>
-                  </div>
+                  <Link to="/doctor/prescription">
+                    <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
+                      <img src={eye} className="h-4 my-auto"></img>
+                      <button className="font-bold ml-2">Preview </button>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -249,7 +259,9 @@ const DoctorDashboard = () => {
         </div>
         {/*main dashboard end */}
       </div>
-      <Footer></Footer>
+      <div className="mt-16 mb-0">
+        <Footer></Footer>
+      </div>
     </div>
   );
 };
