@@ -110,7 +110,9 @@ export default function Register() {
               </div>
 
               <div class=" aadhar lg:grid grid-cols-4 gap-2 mt-4 mr-4">
-                <label class="font-bold lg:text-xl px-4 ">Aadhar Card No. </label>
+                <label class="font-bold lg:text-xl px-4 ">
+                  Aadhar Card No.{" "}
+                </label>
 
                 <input
                   type="text"
@@ -205,9 +207,7 @@ export default function Register() {
               </div>
 
               <div class="lg:grid grid-cols-4 gap-2 mt-4 mr-4">
-                <label type="password" class="  lg:text-xl font-bold px-4">
-                  Password
-                </label>
+                <label class="  lg:text-xl font-bold px-4">Password</label>
                 <input
                   type="password"
                   id="password"
@@ -218,7 +218,11 @@ export default function Register() {
               </div>
 
               <div class="lg:grid lg:grid-cols-4 gap-2 mt-4 mr-4 flex">
-                <label type="password" class=" lg:text-xl font-bold px-4">
+                <label
+                  htmlFor="password"
+                  type="password"
+                  class=" lg:text-xl font-bold px-4"
+                >
                   Confirm Password
                 </label>
                 <input

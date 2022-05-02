@@ -6,8 +6,8 @@ const cookieParser = require("cookie-parser");
 const registerRoute = require("./routes/registerRoute");
 const doctorRoute = require("./routes/doctorRoute");
 const adminRoutes = require("./routes/adminRoutes");
-const { requireAdminAuth } = require("./middlewares/adminAuthMiddleware");
 const logoutRoute = require("./routes/logoutRoute");
+const { requireAdminAuth } = require("./middlewares/adminAuthMiddleware");
 const app = express();
 
 dotenv.config({ path: "./config.env" });

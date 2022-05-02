@@ -5,24 +5,12 @@ import search from "../assets/img/dashboard/search2.png";
 import add_pre_logo from "../assets/img/dashboard/add_prescription_logo.png";
 import Footer from "../components/landingPage/Footer";
 import eye from "../assets/img/dashboard/eye.png";
-import Sidebar from '../components/doctorDashboard/DashboardSidebar'
 import { Link } from "react-router-dom";
-
-
-
 
 const DoctorDashboard = () => {
   return (
     <div className="full-body col-span-10 h-screen">
       <div className="body-without-footer   bg-bgprimary ">
-        {/* side bar start */}
-
-        {/* <Sidebar></Sidebar> */}
-
-        {/* side bar end  */}
-
-        {/*main dashboard start */}
-
         <div className="main    m-2  ">
           {/* dashboard today start */}
           <div className="">
@@ -61,10 +49,6 @@ const DoctorDashboard = () => {
               </Link>
             </div>
           </div>
-          {/* dashboard today end */}
-
-          {/* search patient by id start */}
-
           <div className="grid grid-cols-7 bg-white rounded p-4 ml-12 mr-8 mt-4 shadow">
             <div className="grid col-start-1 col-span-3">
               <h1 className="text-xl font-poppins font-bold p-2 ">
@@ -86,10 +70,6 @@ const DoctorDashboard = () => {
               </div>
             </div>
           </div>
-          {/* search patient by id end */}
-
-          {/* patient details  start */}
-
           <div className="grid grid-cols-2">
             <div className="m-4 p-4">
               <div>
@@ -130,7 +110,6 @@ const DoctorDashboard = () => {
                 </div>
               </div>
             </div>
-            {/* recent health check up start */}
             <div className="m-4 p-4 ">
               <div>
                 <h1 className="font-bold font-poppins text-xl ">
@@ -173,13 +152,8 @@ const DoctorDashboard = () => {
                 </Link>
               </div>
             </div>
-            {/* recent health check up end */}
             <div></div>
           </div>
-          {/* patient details  end */}
-
-          {/* patient dashboard  start */}
-
           <div className="font-poppins m-4  ">
             <div className="flex justify-between m-8">
               <div className="font-bold text-xl ml-4">
@@ -254,10 +228,7 @@ const DoctorDashboard = () => {
               </div>
             </div>
           </div>
-
-          {/* patient dashboard  end */}
         </div>
-        {/*main dashboard end */}
       </div>
       <div className="mt-16 mb-0">
         <Footer></Footer>

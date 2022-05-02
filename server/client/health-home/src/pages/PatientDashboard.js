@@ -3,10 +3,8 @@ import patient_profile from "../assets/img/dashboard/patient2_pbl.png";
 import reports from "../assets/img/dashboard/report2_pbl.png";
 
 import search from "../assets/img/dashboard/search2.png";
-import add_pre_logo from "../assets/img/dashboard/add_prescription_logo.png";
 import Footer from "../components/landingPage/Footer";
 import eye from "../assets/img/dashboard/eye.png";
-import PatientDashboardSidebar from "../components/patientDashboard/PatientProfileSideBar_2";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/img/landingPage/logo.png";
