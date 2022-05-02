@@ -2,9 +2,6 @@ import logo from "../../assets/img/landingPage/logo.png";
 import add_doctor from "../../assets/img/dashboard/add_doctor.png";
 import patient_list from '../../assets/img/dashboard/patient_list.png'
 import doctor_list from '../../assets/img/dashboard/doctor_list.png'
-import reports from "../../assets/img/dashboard/report2_pbl.png";
-import patient_history from "../../assets/img/dashboard/patient_history.jpeg";
-import patient_profile from "../../assets/img/dashboard/patient2_pbl.png";
 import logout from "../../assets/img/dashboard/logout.png";
 import { Link ,Outlet} from "react-router-dom";
 import { useState } from "react";
@@ -22,7 +19,7 @@ const AdminSidebar = () => {
       <div className="side_bar bg-white shadow col-span-2">
         <div className="flex m-2 mt-4  ">
           <div className="logo m-2  ">
-            <img src={logo} className="w-16"></img>
+            <img src={logo} className="w-16" alt="logo"></img>
           </div>
           <div className="heading font-poppins font-bold text-xl  ">
             <Link to="/">
@@ -40,7 +37,7 @@ const AdminSidebar = () => {
           >
             <div className="flex m-2 mt-8 ">
               <div className="w-6 ml-4  ">
-                <img src={dashboard}></img>
+                <img src={dashboard} alt="dashboard"></img>
               </div>
               <div className="font-poppins font-bold ml-4">
                 <h1>Dashboard</h1>
@@ -55,7 +52,7 @@ const AdminSidebar = () => {
           >
             <div className="flex m-2 mt-4 ">
               <div className="w-6 ml-4  ">
-                <img src={add_doctor}></img>
+                <img src={add_doctor} alt="add-doctor"></img>
               </div>
               <div className="font-poppins font-bold ml-4">
                 <h1>Add a Doctor</h1>
@@ -77,7 +74,7 @@ const AdminSidebar = () => {
               >
                 <div className="flex m-2 mt-2  ">
                   <div className="w-6 ml-4  ">
-                    <img src={patient_list}></img>
+                    <img src={patient_list} alt="patient-list"></img>
                   </div>
                   <div className="font-poppins font-bold ml-4">
                     <h1>Patient List</h1>
@@ -95,7 +92,7 @@ const AdminSidebar = () => {
               >
                 <div className="flex m-2 mt-2 ">
                   <div className="w-6 ml-4  ">
-                    <img src={doctor_list}></img>
+                    <img src={doctor_list} alt="doctor-list"></img>
                   </div>
                   <div className="font-poppins font-bold ml-4">
                     <h1>Doctor List</h1>
@@ -108,79 +105,13 @@ const AdminSidebar = () => {
 
         <div className=" mx-auto mt-56 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
           <button className="font-bold  flex items-center">
-            <img src={logout} className="h-4 px-2 "></img>logout
+            <img src={logout} className="h-4 px-2 " alt="logout"></img>logout
           </button>
         </div>
       </div>
       <Outlet />
     </div>
 
-
-
-
-
-
-    // <div className="sode_bar bg-white shadow  ">
-    //   <Link to="/">
-    //     <div className="flex m-2 mt-4  ">
-    //       <div className="logo m-2  ">
-    //         <img src={logo} className="w-16"></img>
-    //       </div>
-
-    //       <div className="heading font-poppins font-bold text-xl  ">
-    //         <h1>Public health Record System</h1>
-    //       </div>
-    //     </div>
-    //   </Link>
-    //   <Link to="/admin/dashboard">
-    //     <div className="flex m-2 mt-12  ">
-    //       <div className="w-6 ml-4  ">
-    //         <img src={add_doctor}></img>
-    //       </div>
-    //       <div className="font-poppins font-bold ml-4">
-    //         <h1>Dashboard</h1>
-    //       </div>
-    //     </div>
-    //   </Link>
-    //   <Link to="/admin/registerdoctor">
-    //     <div className="flex m-2  ">
-    //       <div className="w-6 ml-4  ">
-    //         <img src={add_doctor}></img>
-    //       </div>
-    //       <div className="font-poppins font-bold ml-4">
-    //         <h1>Add a Doctor</h1>
-    //       </div>
-    //     </div>
-    //   </Link>
-
-    //   <Link to="/admin/patientlist">
-    //     <div className="flex m-2 mt-6  ">
-    //       <div className="w-6 ml-4  ">
-    //         <img src={patient_list}></img>
-    //       </div>
-    //       <div className="font-poppins font-bold ml-4">
-    //         <h1>Patient List</h1>
-    //       </div>
-    //     </div>
-    //   </Link>
-
-    //   <Link to="/admin/doctorlist">
-    //     <div className="flex m-2 mt-6  ">
-    //       <div className="w-6 ml-4  ">
-    //         <img src={doctor_list}></img>
-    //       </div>
-    //       <div className="font-poppins font-bold ml-4">
-    //         <h1>Doctor List</h1>
-    //       </div>
-    //     </div>
-    //   </Link>
-
-    //   <div className=" mx-auto mt-96 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
-    //     <button className="font-bold  flex items-center">
-    //       <img src={logout} className="h-4 px-2 "></img>logout
-    //     </button>
-    //   </div>
-    // </div>
   );
 }
  

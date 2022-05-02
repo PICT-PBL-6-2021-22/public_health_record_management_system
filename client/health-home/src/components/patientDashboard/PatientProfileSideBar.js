@@ -15,7 +15,7 @@ const PatientProfileSideBar = () => {
       <div className="side_bar bg-white shadow col-span-2">
         <div className="flex m-2 mt-4  ">
           <div className="logo m-2  ">
-            <img src={logo} className="w-16"></img>
+            <img src={logo} className="w-16" alt="logo"></img>
           </div>
           <div className="heading font-poppins font-bold text-xl  ">
             <Link to="/">
@@ -33,7 +33,7 @@ const PatientProfileSideBar = () => {
           >
             <div className="flex m-2 mt-8 ">
               <div className="w-6 ml-4  ">
-                <img src={dashboard}></img>
+                <img src={dashboard} alt="dashboard"></img>
               </div>
               <div className="font-poppins font-bold ml-4">
                 <h1>Dashboard</h1>
@@ -48,7 +48,7 @@ const PatientProfileSideBar = () => {
           >
             <div className="flex m-2 mt-6  ">
               <div className="w-6 ml-4  ">
-                <img src={reports}></img>
+                <img src={reports} alt="reports"></img>
               </div>
               <div className="font-poppins font-bold ml-4">
                 <h1>Reports</h1>
@@ -69,7 +69,7 @@ const PatientProfileSideBar = () => {
                 }
               >
                 <div className="flex p-2">
-                  <img src={patient_history} className="w-6"></img>
+                  <img src={patient_history} className="w-6"  alt="history"></img>
                   <h1 className="ml-4">Patient History</h1>
                 </div>
               </Link>
@@ -83,7 +83,7 @@ const PatientProfileSideBar = () => {
                 }
               >
                 <div className="flex p-2">
-                  <img src={patient_profile} className="w-6"></img>
+                  <img src={patient_profile} className="w-6" alt="profile"></img>
                   <h1 className="ml-4">Patient Profile</h1>
                 </div>
               </Link>
@@ -93,7 +93,7 @@ const PatientProfileSideBar = () => {
 
         <div className=" mx-auto mt-56 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
           <button className="font-bold  flex items-center">
-            <img src={logout} className="h-4 px-2 "></img>logout
+            <img src={logout} className="h-4 px-2 " alt="logout"></img>logout
           </button>
         </div>
       </div>

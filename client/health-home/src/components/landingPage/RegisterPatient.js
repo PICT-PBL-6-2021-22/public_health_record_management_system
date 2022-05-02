@@ -51,8 +51,6 @@ export default function Register() {
                 Doctor
               </button>
 
-              {/*<button class=" bg-green-500 rounded basis-1/6  m-2 p-1 text-4xl">patient</button>*/}
-              {/*<button class=" bg-green-500  rounded basis-1/6  m-2 p-1 text-4xl">doctor</button>*/}
             </div>
             <div className={Toggle === "Doctor" ? "h-96 p-2" : "hidden"}>
               <h1 className="font-bold flex justify-center mt-6">
@@ -259,7 +257,7 @@ export default function Register() {
                               className=" m-2 h-10 w-16 mt-0  font-poppins font-semibold cursor-pointer "
                               onClick={handelDiseaseAdd}
                             >
-                              <img src={plus_logo} className="w-8 h-8"></img>
+                              <img src={plus_logo} className="w-8 h-8" alt="plus-logo"></img>
                             </button>
                           )}
 
@@ -268,7 +266,7 @@ export default function Register() {
                             className=" m-2 h-10 w-20 mt-0   font-poppins font-semibold cursor-pointer "
                             onClick={handelDiseaseRemove}
                           >
-                            <img src={minus_logo} className="w-8 h-8"></img>
+                            <img src={minus_logo} className="w-8 h-8" alt="minus-logo"></img>
                           </button>
                         )}
                       </div>

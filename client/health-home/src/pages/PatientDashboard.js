@@ -3,37 +3,17 @@ import patient_profile from "../assets/img/dashboard/patient2_pbl.png";
 import reports from "../assets/img/dashboard/report2_pbl.png";
 
 import search from "../assets/img/dashboard/search2.png";
-import add_pre_logo from "../assets/img/dashboard/add_prescription_logo.png";
 import Footer from "../components/landingPage/Footer";
 import eye from "../assets/img/dashboard/eye.png";
-import PatientDashboardSidebar from "../components/patientDashboard/PatientProfileSideBar_2";
 import { Link } from "react-router-dom";
 
-import logo from "../assets/img/landingPage/logo.png";
-import dashboard from "../assets/img/dashboard/dashboard.jpeg";
-// import reports from "../assets/img/dashboard/report2_pbl.png";
-import patient_history from "../assets/img/dashboard/patient_history.jpeg";
-// import patient_profile from "../assets/img/dashboard/patient2_pbl.png";
-
-import logout from "../assets/img/dashboard/logout.png";
-// import { Link } from "react-router-dom";
-import { useState } from "react";
-// import PatientDashboard_side from "../components/patientDashboard/PatientDashboard_side";
-import PatientReports from "../components/patientDashboard/PatientReports";
-
 const PatientDashboard = () => {
-  const [Toggle, setToggle] = useState("Dashboard");
 
+  
   return (
     <div className="full-body col-span-10 h-screen">
       <div className="body-without-footer max-h-min bg-bgprimary ">
-        {/* side bar start */}
-
-        {/* side bar end  */}
-
-        {/*main dashboard start */}
-
-        {/* <PatientDashboard_side></PatientDashboard_side> */}
+        
         <div className=" main ">
           <div className="">
             <div className="flex  h-12 m-2 bg-bgprimary rounded mt-4  ">
@@ -49,7 +29,7 @@ const PatientDashboard = () => {
                   className="w-96 rounded ml-4 text-xl   pl-4 border focus:outline-none "
                 ></input>
                 <div className="bg-white pl-2 rounded ">
-                  <img src={search} className=" h-6 mt-2  "></img>
+                  <img src={search} className=" h-6 mt-2  " alt="search"></img>
                 </div>
               </div>
 
@@ -58,6 +38,7 @@ const PatientDashboard = () => {
                   <img
                     src={patient_profile}
                     className="h-14 p-1 rounded-2xl"
+                    alt="profile"
                   ></img>
                   <div className="mt-4 ml-4  font-bold font-poppins">
                     <h1>abcd xyz </h1>
@@ -66,13 +47,7 @@ const PatientDashboard = () => {
               </Link>
             </div>
           </div>
-          {/* dashboard today end */}
-
-          {/* search patient by id start */}
-
-          {/* search patient by id end */}
-
-          {/* patient details  start */}
+          
 
           <div className="grid grid-cols-2">
             <div className="m-4 p-4">
@@ -148,7 +123,7 @@ const PatientDashboard = () => {
                 </div>
                 <Link to="/patient/prescription">
                   <div className=" mt-2 flex items-center justify-evenly text-base bg-primary py-1 px-2 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-5/12  ">
-                    <img src={reports} className="h-4"></img>
+                    <img src={reports} className="h-4" alt="reports"></img>
 
                     <button className=" font-semibold pl-1">
                       Preview Prescription
@@ -160,9 +135,8 @@ const PatientDashboard = () => {
             {/* recent health check up end */}
             <div></div>
           </div>
-          {/* patient details  end */}
 
-          {/* patient dashboard  start */}
+         
 
           <div className="font-poppins m-4  ">
             <div className="flex justify-between m-8">
@@ -204,7 +178,7 @@ const PatientDashboard = () => {
                   </div>
                   <Link to="/patient/prescription">
                     <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                      <img src={eye} className="h-4 my-auto"></img>
+                      <img src={eye} className="h-4 my-auto" alt="per"></img>
                       <button className="font-bold ml-2">Preview </button>
                     </div>
                   </Link>
@@ -223,7 +197,7 @@ const PatientDashboard = () => {
                   </div>
                   <Link to="/patient/prescription">
                     <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                      <img src={eye} className="h-4 my-auto"></img>
+                      <img src={eye} className="h-4 my-auto" alt="per"></img>
                       <button className="font-bold ml-2">Preview </button>
                     </div>
                   </Link>
@@ -233,7 +207,6 @@ const PatientDashboard = () => {
           </div>
         </div>
 
-        {/*main dashboard end */}
       </div>
       <div className="mt-16 mb-0">
         <Footer></Footer>

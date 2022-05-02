@@ -1,16 +1,14 @@
-import DashboardSidebar from "../patientDashboard/PatientProfileSideBar_2";
 import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import Footer from "../landingPage/Footer";
-import DashboardSidebar2 from "../doctorDashboard/DashboardSidebar";
+
 const DoctorProfile = () => {
   return (
     <body className="font-poppins col-span-10">
       <div className=" bg-bgprimary h-screen  ">
-        {/* <DashboardSidebar2></DashboardSidebar2> */}
 
         <div className="  mr-6">
           <div className="flex bg-white shadow-xl items-center p-2 w-1/5 mt-4 m-4 ml-auto ">
-            <img src={doctor_profile} className="h-12"></img>
+            <img src={doctor_profile} className="h-12" alt="profile"></img>
             <div className="flex font-bold text-xl ">
               <h1 className="px-2 ">Hii</h1>
               <h1>Dr.</h1>
@@ -90,7 +88,7 @@ const DoctorProfile = () => {
               <div className="flex mt-3">
                 <h1 className="font-bold">Specialisation :</h1>
                 <div className="grid grid-cols-2 ml-2">
-                  <h1 className="">Heart sergen</h1>
+                  <h1 className="">Heart surgeon</h1>
                   <h1></h1>
                 </div>
               </div>

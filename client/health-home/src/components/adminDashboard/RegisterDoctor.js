@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Footer from "../landingPage/Footer";
-import Navbar from "../landingPage/Navbar";
 import plus_logo from "../../assets/img/dashboard/add2_pbl.png";
 import minus_logo from "../../assets/img/dashboard/minus2_pbl.png";
 
 export default function Register() {
-  const [Toggle, setToggle] = useState("Patient");
 
   const [DiseaseList, setDiseaseList] = useState([{ disease: "" }]);
 
@@ -21,7 +19,6 @@ export default function Register() {
 
   return (
     <div class="body col-span-10 h-screen overflow-y-scroll">
-      {/* <Navbar></Navbar> */}
 
       <div class="bg-secoundry">
         <div class="">
@@ -39,8 +36,6 @@ export default function Register() {
                 Doctor
               </h1>
 
-              {/*<button class=" bg-green-500 rounded basis-1/6  m-2 p-1 text-4xl">patient</button>*/}
-              {/*<button class=" bg-green-500  rounded basis-1/6  m-2 p-1 text-4xl">doctor</button>*/}
             </div>
 
             <div class="grid grid-cols-4 gap-2 mt-4 mr-4">
@@ -202,7 +197,7 @@ export default function Register() {
                             className=" m-2 h-10 w-16 mt-0 ml-4  font-poppins font-semibold cursor-pointer "
                             onClick={handelDiseaseAdd}
                           >
-                            <img src={plus_logo} className="w-6 h-6"></img>
+                            <img src={plus_logo} className="w-6 h-6" alt="plus-logo"></img>
                           </button>
                         )}
 
@@ -211,7 +206,7 @@ export default function Register() {
                           className=" m-2 h-10 w-20 mt-0   font-poppins font-semibold cursor-pointer "
                           onClick={handelDiseaseRemove}
                         >
-                          <img src={minus_logo} className="w-6 h-6"></img>
+                          <img src={minus_logo} className="w-6 h-6" alt="minus-logo"></img>
                         </button>
                       )}
                     </div>

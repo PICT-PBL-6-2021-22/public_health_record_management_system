@@ -1,4 +1,3 @@
-import logo from "../../assets/img/landingPage/logo.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import React, { useRef } from 'react';
@@ -95,7 +94,6 @@ const Contact = () => {
                     name="message"
                     className="pl-4 bg-blue-100  rounded  col-span-3 text-lg py-2 outline-none"
                   ></textarea>
-                  {/*<input className="pl-8 bg-blue-100  rounded " type="text" placeholder="message"></input>*/}
                 </div>
                 <div className="flex justify-center ">
                   <button className="text-lg mt-2 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
