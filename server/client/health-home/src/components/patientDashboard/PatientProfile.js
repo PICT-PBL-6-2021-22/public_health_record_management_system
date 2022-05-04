@@ -1,4 +1,3 @@
-import PatientDashboardSidebar from "./PatientProfileSideBar_2";
 import patient_profile from "../../assets/img/dashboard/patient2_pbl.png";
 import Footer from "../landingPage/Footer";
 
@@ -8,7 +7,7 @@ const PatientProfile = () => {
       <div className="bg-bgprimary min-h-screen ">
         <div className="  ml-8 ">
           <div className="flex bg-white shadow-xl items-center p-2 w-1/5 mt-4 m-4 ml-auto  min-w-min">
-            <img src={patient_profile} className="h-12"></img>
+            <img src={patient_profile} className="h-12" alt="profile"></img>
             <div className="flex font-bold text-xl ">
               <h1 className="px-2 ">Hii</h1>
               <h1 className="">abcd</h1>

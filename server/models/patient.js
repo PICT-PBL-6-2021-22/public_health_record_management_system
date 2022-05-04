@@ -41,7 +41,7 @@ const patientSchema = new mongoose.Schema({
     min: [100000000000, "Please enter an valid AdharCard Number"],
     max: [999999999999, "Please enter an valid AdharCard Number"],
     unique: [true, "This AdharCard is already Registerd on System."],
-    required: [true, "Pleasee enter AdharCard Number"],
+    required: [true, "Please enter AdharCard Number"],
   },
   bloodGroup: {
     type: String,
@@ -93,10 +93,6 @@ const patientSchema = new mongoose.Schema({
   contactPerson: {
     name: {
       firstName: {
-        type: String,
-        required: [true, "Name of contact person is required"],
-      },
-      middleName: {
         type: String,
         required: [true, "Name of contact person is required"],
       },

@@ -1,4 +1,3 @@
-import logo from "../../assets/img/landingPage/logo.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 const About = () => {

@@ -1,4 +1,6 @@
 const Admin = require("../models/admin");
+
+const maxAge = 3 * 24 * 60 * 60;
 const { createToken } = require("../utils/createToken");
 const handleError = (err) => {
   let errors = { email: "", password: "" };
@@ -28,9 +30,7 @@ module.exports.admin_login = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).json({ admin });
   } catch (err) {
-    // console.log(err);
-    // console.log(err.message);
     const errors = handleError(err);
-    res.status(404).json({ errors });
+    res.status(400).json({ errors });
   }
 };

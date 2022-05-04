@@ -20,8 +20,6 @@ const PatientList = () => {
                 <hr></hr>
                 <PatientListCompo/>
 
-                
-
             </div>
     </div>
   );

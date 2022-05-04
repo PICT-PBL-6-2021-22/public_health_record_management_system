@@ -8,7 +8,7 @@ const handleError = (err) => {
   console.log(err.code);
   // incorrect email
   if (err.message === "Invalid HealthID") {
-    errors.email = "That HealthID is not registered";
+    errors.healthID = "That HealthID is not registered";
   }
 
   // incorrect password
@@ -32,6 +32,8 @@ const handleError = (err) => {
 };
 
 module.exports.patient_register = async (req, res) => {
+  console.log(req.body.diseases);
+  const diseases = Object.values(req.body.diseases);
   const {
     name,
     dob,
@@ -41,9 +43,13 @@ module.exports.patient_register = async (req, res) => {
     bloodGroup,
     address,
     password,
-    diseases,
     contactPerson,
   } = req.body;
+
+  // let diseaseList = Object.values(diseases);
+  // diseases = diseaseList;
+  // console.log(diseases);
+
   const healthID = adharCard;
   try {
     const patient = await Patient.create({

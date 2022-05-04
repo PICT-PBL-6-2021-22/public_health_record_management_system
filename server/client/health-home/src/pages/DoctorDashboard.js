@@ -7,10 +7,15 @@ import Footer from "../components/landingPage/Footer";
 import eye from "../assets/img/dashboard/eye.png";
 import { Link } from "react-router-dom";
 
+
+
+
 const DoctorDashboard = () => {
   return (
     <div className="full-body col-span-10 h-screen">
       <div className="body-without-footer   bg-bgprimary ">
+       
+
         <div className="main    m-2  ">
           {/* dashboard today start */}
           <div className="">
@@ -27,7 +32,7 @@ const DoctorDashboard = () => {
                   className="w-96 rounded ml-4 text-xl   pl-4 border focus:outline-none "
                 ></input>
                 <div className="bg-white pl-2 rounded ">
-                  <img src={search} className=" h-6 mt-2  "></img>
+                  <img src={search} className=" h-6 mt-2  " alt="search"></img>
                 </div>
               </div>
 
@@ -36,6 +41,7 @@ const DoctorDashboard = () => {
                   <img
                     src={doctor_profile}
                     className="w-12 p-1 rounded-2xl"
+                    alt="profile"
                   ></img>
                   <div className="grid grid-rows-2 ml-4 gap-2  mb-4">
                     <div className="font-bold font-poppins text-base">
@@ -49,6 +55,8 @@ const DoctorDashboard = () => {
               </Link>
             </div>
           </div>
+          {/* dashboard today end */}
+
           <div className="grid grid-cols-7 bg-white rounded p-4 ml-12 mr-8 mt-4 shadow">
             <div className="grid col-start-1 col-span-3">
               <h1 className="text-xl font-poppins font-bold p-2 ">
@@ -63,13 +71,15 @@ const DoctorDashboard = () => {
             </div>
             <div className="grid col-start-8 h-10   bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary  ">
               <div className="flex py-2 px-4 items-center ">
-                <img src={search} className=" h-4  "></img>
+                <img src={search} className=" h-4  " alt="search"></img>
                 <button className="ml-2 flex  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary   ">
                   Search
                 </button>
               </div>
             </div>
           </div>
+          
+
           <div className="grid grid-cols-2">
             <div className="m-4 p-4">
               <div>
@@ -110,6 +120,7 @@ const DoctorDashboard = () => {
                 </div>
               </div>
             </div>
+            {/* recent health check up start */}
             <div className="m-4 p-4 ">
               <div>
                 <h1 className="font-bold font-poppins text-xl ">
@@ -143,7 +154,7 @@ const DoctorDashboard = () => {
                 </div>
                 <Link to="/doctor/prescription">
                   <div className=" mt-2 flex items-center justify-evenly text-base bg-primary py-1 px-2 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-5/12  ">
-                    <img src={reports} className="h-4"></img>
+                    <img src={reports} className="h-4" alt="report"></img>
 
                     <button className=" font-semibold pl-1">
                       Preview Prescription
@@ -152,8 +163,11 @@ const DoctorDashboard = () => {
                 </Link>
               </div>
             </div>
+            {/* recent health check up end */}
             <div></div>
           </div>
+
+
           <div className="font-poppins m-4  ">
             <div className="flex justify-between m-8">
               <div className="font-bold text-xl ml-4">
@@ -161,7 +175,7 @@ const DoctorDashboard = () => {
               </div>
               <Link to="/doctor/addDiagno">
                 <div className=" flex  bg-primary pl-0 pr-3 py-1 items-center justify-items-center  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary   ">
-                  <img src={add_pre_logo} className="h-3 mx-3"></img>
+                  <img src={add_pre_logo} className="h-3 mx-3" alt="adddiagno"></img>
 
                   <button className="font-semibold ">Add New Diagnosis</button>
                 </div>
@@ -201,7 +215,7 @@ const DoctorDashboard = () => {
                   </div>
                   <Link to="/doctor/prescription">
                     <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                      <img src={eye} className="h-4 my-auto"></img>
+                      <img src={eye} className="h-4 my-auto" alt="preview"></img>
                       <button className="font-bold ml-2">Preview </button>
                     </div>
                   </Link>
@@ -220,7 +234,7 @@ const DoctorDashboard = () => {
                   </div>
                   <Link to="/doctor/prescription">
                     <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                      <img src={eye} className="h-4 my-auto"></img>
+                      <img src={eye} className="h-4 my-auto" alt="preview"></img>
                       <button className="font-bold ml-2">Preview </button>
                     </div>
                   </Link>
@@ -228,6 +242,7 @@ const DoctorDashboard = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
       <div className="mt-16 mb-0">

@@ -1,10 +1,86 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profile from "../../assets/img/landingPage/profile.png";
-
+import ReactLoading from "react-loading";
 export default function Login() {
+  const navigate = useNavigate();
+  const [Loading, setLoading] = useState(false);
   const [Toggle, setToggle] = useState("Patient");
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handlePatientLogin = async (healthID, password) => {
+    setLoading(true);
+    const res = await fetch("/login/patient", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        healthID,
+        password,
+      }),
+    });
+
+    const data = await res.json();
+
+    // window.alert(data);
+    if (data.errors) {
+      setUsernameError(data.errors.healthID);
+      setPasswordError(data.errors.password);
+      setLoading(false);
+    } else {
+      // console.log(data.errors);
+      setLoading(false);
+      navigate("/patient/dashboard");
+    }
+  };
+
+  const handleDoctorAdminLogin = async (email, password, path) => {
+    setLoading(true);
+    const res = await fetch(path, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await res.json();
+    if (data.errors) {
+    } else {
+      // console.log(data.errors);
+      setLoading(false);
+      if (path == "/login/doctor") {
+        navigate("/doctor/dashboard");
+      } else {
+        navigate("/admin/dashboard");
+      }
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    switch (Toggle) {
+      case "Patient":
+        handlePatientLogin(username, password);
+        break;
+      case "Doctor":
+        handleDoctorAdminLogin(username, password, "/login/doctor");
+        break;
+      case "Admin":
+        handleDoctorAdminLogin(username, password, "/login/admin");
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <div className="bg-white flex flex-col justify-items-center items-center py-4 px-4 rounded shadow-md lg:w-3/4 w-full my-7 ml-auto ">
       <h1 className="text-3xl font-bold font-poppins text-primary py-5">
@@ -17,12 +93,24 @@ export default function Login() {
               ? "py-2 px-8 text-lg font-poppins font-semibold cursor-pointer rounded bg-primary"
               : "py-2 px-8 text-lg font-poppins font-medium text-primary cursor-pointer rounded"
           }
-          onClick={() => setToggle("Patient")}
+          onClick={() => {
+            setToggle("Patient");
+            setUsername("");
+            setPassword("");
+            setUsernameError("");
+            setPasswordError("");
+          }}
         >
           Patient
         </button>
         <button
-          onClick={() => setToggle("Doctor")}
+          onClick={() => {
+            setToggle("Doctor");
+            setUsername("");
+            setPassword("");
+            setUsernameError("");
+            setPasswordError("");
+          }}
           className={
             Toggle === "Doctor"
               ? "py-2 px-8 text-lg font-poppins font-semibold cursor-pointer rounded bg-primary"
@@ -32,7 +120,13 @@ export default function Login() {
           Doctor
         </button>
         <button
-          onClick={() => setToggle("Admin")}
+          onClick={() => {
+            setToggle("Admin");
+            setUsername("");
+            setPassword("");
+            setUsernameError("");
+            setPasswordError("");
+          }}
           className={
             Toggle === "Admin"
               ? "py-2 px-8 text-lg font-poppins font-semibold cursor-pointer rounded bg-primary"
@@ -47,7 +141,7 @@ export default function Login() {
         alt="profile pic"
         className="h-20 my-6 border-2 rounded-full"
       />
-      <form className="flex flex-col w-full px-8">
+      <form className="flex flex-col w-full px-8" onSubmit={handleLogin}>
         <label
           htmlFor="email"
           className="font-poppins pt-2 pb-1 text-lg font-bold"
@@ -59,7 +153,11 @@ export default function Login() {
           name="username"
           id="username"
           className="font-poppins px-3 py-2 bg-bgsecondary rounded outline-none"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
         />
+        <span className="text-sm text-red-500">{usernameError}</span>
         <label
           htmlFor="password"
           className="font-poppins pt-6 pb-1 text-lg font-bold"
@@ -71,31 +169,29 @@ export default function Login() {
           name="password"
           id="password"
           className="font-poppins px-3 py-2 bg-bgsecondary rounded outline-none"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
-        <Link
-          to="/patient/dashboard"
-          className={Toggle === "Patient" ? " flex justify-center" : "hidden"}
-        >
-          <button className="text-lg mt-10  bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
-            Submit
+        <span className="text-sm text-red-500">{passwordError}</span>
+
+        {Loading ? (
+          <div className="flex justify-center items-center py-3">
+            <ReactLoading
+              type={"bubbles"}
+              color={"color"}
+              height={"10%"}
+              width={"10%"}
+            />
+          </div>
+        ) : (
+          <button
+            type="submit"
+            className="text-lg mt-10  bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary"
+          >
+            Login
           </button>
-        </Link>
-        <Link
-          to="/doctor/dashboard"
-          className={Toggle === "Doctor" ? "flex justify-center" : "hidden"}
-        >
-          <button className="text-lg mt-10 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
-            Submit
-          </button>
-        </Link>
-        <Link
-          to="/admin/dashboard"
-          className={Toggle === "Admin" ? "flex justify-center" : "hidden"}
-        >
-          <button className="text-lg mt-10 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
-            Submit
-          </button>
-        </Link>
+        )}
       </form>
       <h1 className="font-poppins text-base pt-5">
         New User, <Link to="/Register">Register here</Link>
