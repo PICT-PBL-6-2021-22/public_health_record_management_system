@@ -10,7 +10,7 @@ const requireDoctorAuth = (req, res, next) => {
         res.status(401).send({ errors });
       } else {
         const doctor = await Doctor.findById(decodedToken.id);
-        req.Doctor = doctor;
+        req.doctor = doctor;
         next();
       }
     });

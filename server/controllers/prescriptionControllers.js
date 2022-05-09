@@ -2,15 +2,21 @@ const Patient = require("../models/patient");
 
 module.exports.add_prescription = async (req, res) => {
   const healthID = req.params.healthID;
-  const {
-    doctor,
-    hospital,
-    chiefComplaint,
-    clinicalFindings,
-    medicines,
-    investigations,
-    advices,
-  } = req.body;
+  const chiefComplaints = Object.values(req.body.chiefComplaints);
+  const tempClinicalFinding = Object.values(req.body.clinicalFindings);
+  const clinicalFinding = tempClinicalFinding.map((item) => {
+    return item.finding;
+  });
+  console.log(clinicalFinding);
+  const medicines = Object.values(req.body.medicines);
+  const investigations = Object.values(req.body.investigations);
+  const advices = Object.values(req.body.advices);
+  const notes = req.body.notes.note;
+  const diagnosis = req.body.diagnosis.diagno;
+  const procedureConducted = req.body.procedureConducted.procedure;
+  const { doctor, doctormobile, hospital } = req.body;
+
+  console.log(req.body);
   try {
     const patient = await Patient.findOneAndUpdate(
       { healthID },
@@ -18,9 +24,13 @@ module.exports.add_prescription = async (req, res) => {
         $push: {
           prescriptions: {
             doctor,
+            doctormobile,
             hospital,
-            chiefComplaint,
-            clinicalFindings,
+            notes,
+            diagnosis,
+            procedureConducted,
+            chiefComplaints,
+            clinicalFinding,
             medicines,
             investigations,
             advices,
@@ -30,6 +40,7 @@ module.exports.add_prescription = async (req, res) => {
     );
     res.status(200).json({ patient });
   } catch (err) {
+    console.log(err);
     res.status(404).json({ msg: "Something Went Wrong!" });
   }
 };
@@ -42,6 +53,6 @@ module.exports.view_prescription = async (req, res) => {
     const prescription = patient.prescriptions.filter((pres) => pres._id == id);
     res.status(200).json({ prescription });
   } catch (err) {
-    res.status(404).json({ msg: "Something Went Wrong" });
+    res.status(404).json({ error: "Something Went Wrong" });
   }
 };

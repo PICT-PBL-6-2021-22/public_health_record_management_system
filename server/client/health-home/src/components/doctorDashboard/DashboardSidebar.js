@@ -8,6 +8,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 
 const DashboardSidebar = () => {
+  const [healthID, setHealthID] = useState("");
   const [Toggle, setToggle] = useState("Dashboard");
   return (
     <div className="h-screen overflow-y-hidden w-screen grid grid-cols-12">
@@ -68,7 +69,11 @@ const DashboardSidebar = () => {
                 }
               >
                 <div className="flex p-2">
-                  <img src={patient_history} className="w-6" alt="pat-history"></img>
+                  <img
+                    src={patient_history}
+                    className="w-6"
+                    alt="pat-history"
+                  ></img>
                   <h1 className="ml-4">Patient History</h1>
                 </div>
               </Link>
@@ -82,7 +87,11 @@ const DashboardSidebar = () => {
                 }
               >
                 <div className="flex p-2">
-                  <img src={patient_profile} className="w-6" alt="profile"></img>
+                  <img
+                    src={patient_profile}
+                    className="w-6"
+                    alt="profile"
+                  ></img>
                   <h1 className="ml-4">Doctor Profile</h1>
                 </div>
               </Link>
@@ -98,7 +107,6 @@ const DashboardSidebar = () => {
       </div>
       <Outlet />
     </div>
-    
   );
 };
 

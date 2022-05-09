@@ -9,20 +9,22 @@ const {
   view_prescription,
 } = require("../controllers/prescriptionControllers");
 const { requireAdminAuth } = require("../middlewares/adminAuthMiddleware");
-
-// const {
-
-// }
+const {
+  search_patient,
+  get_doctor,
+} = require("../controllers/doctorControllers");
 
 const router = Router();
 
-router.post("/register/doctor", doctor_register, requireAdminAuth);
+router.post("/register/doctor", requireAdminAuth, doctor_register);
 router.post("/login/doctor", doctor_login);
-router.post("/prescription/:healthID", add_prescription, requireDoctorAuth);
+router.post("/prescription/:healthID", requireDoctorAuth, add_prescription);
+router.get("/searchpatient/:healthID", requireDoctorAuth, search_patient);
 router.get(
   "/viewprescription/:healthID/:id",
-  view_prescription,
-  requireDoctorAuth
+  requireDoctorAuth,
+  view_prescription
 );
+router.get("/getdoctor", requireDoctorAuth, get_doctor);
 
 module.exports = router;

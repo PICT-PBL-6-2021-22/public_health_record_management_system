@@ -14,14 +14,20 @@ import AddNewDiagnosis from "./components/doctorDashboard/AddNewDiagnosis";
 import { Routes, Route } from "react-router-dom";
 import PatientList from "./components/adminDashboard/PatientList";
 import DoctorList from "./components/adminDashboard/DoctorList";
-import AdminProfile from "./components/adminDashboard/AdminProfile";
 import PatientProfileSideBar from "./components/patientDashboard/PatientProfileSideBar";
 import PatientHistory from "./components/patientDashboard/PatientHistory";
 import DoctorDashboardSidebar from "./components/doctorDashboard/DashboardSidebar";
 import AdminSidebar from "./components/adminDashboard/AdminSidebar";
 import PreviewPrescription from "./components/patientDashboard/PreviewPrescription";
+import PatientReportsDoctorView from "./components/doctorDashboard/PatientReportsDoctorView";
+import PatientHistoryDoctorView from "./components/doctorDashboard/PatientHistoryDoctorView";
+import PreviewPrescriptionDoctorView from "./components/doctorDashboard/PreviewPrescriptionDoctorView";
+import { useState } from "react";
 
 function App() {
+  const [healthID, setHealthID] = useState("");
+  const [prescriptionID, setPrescriptionID] = useState("");
+
   return (
     <div className="bg-bgprimary flex">
       <Routes>
@@ -38,12 +44,51 @@ function App() {
         </Route>
 
         <Route path="doctor" element={<DoctorDashboardSidebar />}>
-          <Route path="dashboard" element={<DoctorDashboard />} />
-          <Route path="reports" element={<PatientReports />} />
-          <Route path="history" element={<PatientHistory />} />
-          <Route path="profile" element={<DoctorProfile />} />
-          <Route path="addDiagno" element={<AddNewDiagnosis />} />
-          <Route path="prescription" element={<PreviewPrescription />} />
+          <Route
+            path="dashboard"
+            element={
+              <DoctorDashboard
+                healthID={healthID}
+                setHealthID={setHealthID}
+                setPrescriptionID={setPrescriptionID}
+              />
+            }
+          />
+          <Route
+            path="reports"
+            element={
+              <PatientReportsDoctorView
+                healthID={healthID}
+                setPrescriptionID={setPrescriptionID}
+              />
+            }
+          />
+          <Route
+            path="history"
+            element={
+              <PatientHistoryDoctorView
+                healthID={healthID}
+                setPrescriptionID={setPrescriptionID}
+              />
+            }
+          />
+          <Route
+            path="profile"
+            element={<DoctorProfile healthID={healthID} />}
+          />
+          <Route
+            path="addDiagno"
+            element={<AddNewDiagnosis healthID={healthID} />}
+          />
+          <Route
+            path="prescription"
+            element={
+              <PreviewPrescriptionDoctorView
+                healthID={healthID}
+                prescriptionID={prescriptionID}
+              />
+            }
+          />
         </Route>
 
         <Route path="admin" element={<AdminSidebar />}>
@@ -51,7 +96,6 @@ function App() {
           <Route path="doctorslist" element={<DoctorList />} />
           <Route path="patientslist" element={<PatientList />} />
           <Route path="registerdoctor" element={<RegisterDoctor />} />
-          <Route path="profile" element={<AdminProfile />} />
         </Route>
       </Routes>
     </div>

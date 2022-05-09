@@ -18,6 +18,11 @@ const prescriptionSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter Doctor Name"],
     },
+    doctormobile: {
+      type: String,
+      required: [true, "Please enter Mobile Number"],
+      minlength: [10, "Please Enter a valid Mobile Number"],
+    },
     hospital: {
       name: {
         type: String,
@@ -27,8 +32,13 @@ const prescriptionSchema = new mongoose.Schema(
         type: String,
         required: [true, "Please enter hospital address."],
       },
+      mobile: {
+        type: String,
+        required: [true, "Please enter Mobile Number"],
+        minlength: [10, "Please Enter a valid Mobile Number"],
+      },
     },
-    chiefComplaint: [
+    chiefComplaints: [
       {
         complaint: {
           type: String,
@@ -38,9 +48,11 @@ const prescriptionSchema = new mongoose.Schema(
         },
       },
     ],
-    clinicalFinding: {
-      type: String,
-    },
+    clinicalFinding: [
+      {
+        type: String,
+      },
+    ],
     notes: {
       type: String,
     },
@@ -101,7 +113,7 @@ const prescriptionSchema = new mongoose.Schema(
     ],
     advices: [
       {
-        advices: {
+        advice: {
           type: String,
         },
       },

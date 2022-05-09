@@ -2,6 +2,8 @@ const Doctor = require("../models/doctor");
 const { createToken } = require("../utils/createToken");
 const maxAge = 3 * 24 * 60 * 60;
 module.exports.doctor_register = async (req, res) => {
+  const education = Object.values(req.body.education);
+  const specialization = Object.values(req.body.specialization);
   const {
     name,
     org,
@@ -11,10 +13,9 @@ module.exports.doctor_register = async (req, res) => {
     email,
     adharCard,
     bloodGroup,
-    education,
     address,
     password,
-    specialization,
+    orgNumber,
     emergencyno,
   } = req.body;
   try {
@@ -31,6 +32,7 @@ module.exports.doctor_register = async (req, res) => {
       address,
       password,
       specialization,
+      orgNumber,
       emergencyno,
     });
 

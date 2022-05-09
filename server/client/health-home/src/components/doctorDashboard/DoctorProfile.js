@@ -1,11 +1,11 @@
 import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import Footer from "../landingPage/Footer";
+import { Link } from "react-router-dom";
 
 const DoctorProfile = () => {
   return (
     <body className="font-poppins col-span-10">
       <div className=" bg-bgprimary h-screen  ">
-
         <div className="  mr-6">
           <div className="flex bg-white shadow-xl items-center p-2 w-1/5 mt-4 m-4 ml-auto ">
             <img src={doctor_profile} className="h-12" alt="profile"></img>
@@ -98,8 +98,6 @@ const DoctorProfile = () => {
       </div>
       <div className="-my-16">
         <Footer></Footer>
-
-
       </div>
     </body>
   );

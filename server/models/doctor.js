@@ -122,6 +122,11 @@ const doctorSchema = new mongoose.Schema({
     required: [true, "Please enter Mobile Number"],
     minlength: [10, "Please Enter a valid Mobile Number"],
   },
+  orgNumber: {
+    type: String,
+    required: [true, "Please enter Mobile Number"],
+    minlength: [10, "Please Enter a valid Mobile Number"],
+  },
 });
 
 doctorSchema.pre("save", async function (next) {

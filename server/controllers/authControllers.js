@@ -34,3 +34,8 @@ module.exports.admin_login = async (req, res) => {
     res.status(400).json({ errors });
   }
 };
+
+module.exports.get_admin = async (req, res) => {
+  let admin = req.Admin;
+  res.status(200).json({ admin });
+};

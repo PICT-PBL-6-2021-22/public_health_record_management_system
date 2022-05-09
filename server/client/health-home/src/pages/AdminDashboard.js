@@ -4,8 +4,20 @@ import search from "../assets/img/dashboard/search2.png";
 import Footer from "../components/landingPage/Footer";
 import PatientList from "../components/adminDashboard/PatientList";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const AdminDashboard = () => {
+  const [adminEmail, setAdminEmail] = useState("");
+
+  useEffect(() => {
+    async function fetchAdmin() {
+      const res = await fetch("/getadmin");
+      const data = await res.json();
+      setAdminEmail(data.admin.email);
+    }
+    fetchAdmin();
+  }, []);
+
   return (
     <div className="full-body col-span-10">
       <div className="body-without-footer  h-screen max-h-min bg-bgprimary ">
@@ -35,18 +47,16 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <Link to="/admin/profile">
-                <div className="flex bg-white rounded shadow   px-4  ml-60 h-14 ">
-                  <img
-                    src={admin_profile}
-                    className="h-12 my-1  p-1 rounded-2xl"
-                    alt="profile"
-                  ></img>
-                  <div className="flex items-center ml-4  font-bold font-poppins">
-                    <h1>Admin Name </h1>
-                  </div>
+              <div className="flex bg-white rounded shadow   px-4  ml-60 h-14 ">
+                <img
+                  src={admin_profile}
+                  className="h-12 my-1  p-1 rounded-2xl"
+                  alt="profile"
+                ></img>
+                <div className="flex items-center ml-4  font-bold font-poppins">
+                  <h1>{adminEmail} </h1>
                 </div>
-              </Link>
+              </div>
             </div>
             <div>
               <PatientList></PatientList>
