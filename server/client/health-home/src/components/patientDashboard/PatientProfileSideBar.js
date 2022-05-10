@@ -3,11 +3,21 @@ import dashboard from "../../assets/img/dashboard/dashboard.jpeg";
 import reports from "../../assets/img/dashboard/report2_pbl.png";
 import patient_history from "../../assets/img/dashboard/patient_history.jpeg";
 import patient_profile from "../../assets/img/dashboard/patient2_pbl.png";
-import logout from "../../assets/img/dashboard/logout.png";
-import { Link, Outlet } from "react-router-dom";
+import logoutimg from "../../assets/img/dashboard/logout.png";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const PatientProfileSideBar = () => {
+const PatientProfileSideBar = (props) => {
+  const navigate = useNavigate();
+  const logout = async () => {
+    const res = await fetch("/logout");
+    props.settoastCondition({
+      status: "success",
+      message: "Logged out Successfully!!!",
+    });
+    props.setToastShow(true);
+    navigate("/");
+  };
   const [Toggle, setToggle] = useState("Dashboard");
 
   return (
@@ -69,7 +79,11 @@ const PatientProfileSideBar = () => {
                 }
               >
                 <div className="flex p-2">
-                  <img src={patient_history} className="w-6"  alt="history"></img>
+                  <img
+                    src={patient_history}
+                    className="w-6"
+                    alt="history"
+                  ></img>
                   <h1 className="ml-4">Patient History</h1>
                 </div>
               </Link>
@@ -83,7 +97,11 @@ const PatientProfileSideBar = () => {
                 }
               >
                 <div className="flex p-2">
-                  <img src={patient_profile} className="w-6" alt="profile"></img>
+                  <img
+                    src={patient_profile}
+                    className="w-6"
+                    alt="profile"
+                  ></img>
                   <h1 className="ml-4">Patient Profile</h1>
                 </div>
               </Link>
@@ -92,8 +110,8 @@ const PatientProfileSideBar = () => {
         </nav>
 
         <div className=" mx-auto mt-56 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
-          <button className="font-bold  flex items-center">
-            <img src={logout} className="h-4 px-2 " alt="logout"></img>logout
+          <button className="font-bold  flex items-center" onClick={logout}>
+            <img src={logoutimg} className="h-4 px-2 " alt="logout"></img>logout
           </button>
         </div>
       </div>

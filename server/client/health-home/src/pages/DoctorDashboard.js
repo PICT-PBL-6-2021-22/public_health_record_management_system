@@ -13,7 +13,6 @@ const DoctorDashboard = (props) => {
   const [dob, setDob] = useState("01/01/2006");
   const [patient, setPatient] = useState({});
   const [prescriptions, setPrescriptions] = useState([{}]);
-  const [latestPrescription, setLatestPrescription] = useState([{}]);
   const [doctor, setDoctor] = useState({
     name: {
       firstName: "",
@@ -63,6 +62,11 @@ const DoctorDashboard = (props) => {
       const res = await fetch("/getdoctor");
       const data = await res.json();
       if (data.errors) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please login to see this page!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
       } else {
         setDoctor(data.doctor);
@@ -76,10 +80,17 @@ const DoctorDashboard = (props) => {
 
         if (data.errors) {
           setLoading(false);
+          props.settoastCondition({
+            status: "info",
+            message: "Please login to see this page!!!",
+          });
+          props.setToastShow(true);
           navigate("/");
         } else {
           setPatient(data.patient);
-          setPrescriptions(data.patient.prescriptions.reverse());
+          if (data.patient.prescriptions) {
+            setPrescriptions(data.patient.prescriptions.reverse());
+          }
           setDob(convertDatetoString(patient.dob));
           setLoading(false);
         }
@@ -87,6 +98,7 @@ const DoctorDashboard = (props) => {
         setLoading(false);
         setPatient({});
       }
+      setLoading(false);
     }
     getdoctor();
     getpatient();
@@ -100,17 +112,27 @@ const DoctorDashboard = (props) => {
       const data = await res.json();
 
       if (data.errors) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please login to see this page!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
         setLoading(false);
       } else {
         setPatient(data.patient);
-        setPrescriptions(data.patient.prescriptions.reverse());
-        console.log(prescriptions);
-        console.log(prescriptions);
-        console.log(prescriptions);
+        if (data.patient.prescriptions) {
+          setPrescriptions(data.patient.prescriptions.reverse());
+        }
         setDob(convertDatetoString(patient.dob));
         setLoading(false);
       }
+    } else {
+      props.settoastCondition({
+        status: "warning",
+        message: "Please Enter 12 Digit HealthID !!!",
+      });
+      props.setToastShow(true);
     }
   };
 
@@ -263,48 +285,57 @@ const DoctorDashboard = (props) => {
                     Recent Health Checkup
                   </h1>
                 </div>
-                <div className="bg-white mt-4 font-poppins p-4 rounded-xl shadow px-8">
-                  <div className="flex ">
-                    <div>
-                      <h1>Consultant Doctor :</h1>
+                {prescriptions.length > 0 ? (
+                  <div className="bg-white mt-4 font-poppins p-4 rounded-xl shadow px-8">
+                    <div className="flex ">
+                      <div>
+                        <h1>Consultant Doctor :</h1>
+                      </div>
+                      <div className="ml-2">
+                        <h1>{`Dr. ${prescriptions[0].doctor}`}</h1>
+                      </div>
                     </div>
-                    <div className="ml-2">
-                      <h1>{`Dr. ${prescriptions[0].doctor}`}</h1>
+                    <div className="flex">
+                      <div>
+                        <h1>Date :</h1>
+                      </div>
+                      <div className="ml-2">
+                        <h1>
+                          {convertDatetoString(prescriptions[0].createdAt)}
+                        </h1>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex">
-                    <div>
-                      <h1>Date :</h1>
+                    <div className="flex">
+                      <div>
+                        <h1>Diagnosis : </h1>
+                      </div>
+                      <div className="ml-2">
+                        <h1>{prescriptions[0].diagnosis}</h1>
+                      </div>
                     </div>
-                    <div className="ml-2">
-                      <h1>{convertDatetoString(prescriptions[0].createdAt)}</h1>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div>
-                      <h1>Diagnosis : </h1>
-                    </div>
-                    <div className="ml-2">
-                      <h1>{prescriptions[0].diagnosis}</h1>
-                    </div>
-                  </div>
-                  <Link
-                    to="/doctor/prescription"
-                    onClick={() => {
-                      props.setPrescriptionID(prescriptions[0]._id);
-                    }}
-                  >
-                    <div className=" mt-2 flex items-center justify-evenly text-base bg-primary py-1 px-2 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-5/12  ">
-                      <img src={reports} className="h-4" alt="report"></img>
+                    <Link
+                      to="/doctor/prescription"
+                      onClick={() => {
+                        props.setPrescriptionID(prescriptions[0]._id);
+                      }}
+                    >
+                      <div className=" mt-2 flex items-center justify-evenly text-base bg-primary py-1 px-2 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-5/12  ">
+                        <img src={reports} className="h-4" alt="report"></img>
 
-                      <button className=" font-semibold pl-1">
-                        Preview Prescription
-                      </button>
-                    </div>
-                  </Link>
-                </div>
+                        <button className=" font-semibold pl-1">
+                          Preview Prescription
+                        </button>
+                      </div>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="bg-white mt-4 font-poppins p-4 rounded-xl shadow px-8 flex justify-center font-bold">
+                    {" "}
+                    No Data Found...{" "}
+                  </div>
+                )}
+                {/* recent health check up end */}
               </div>
-              {/* recent health check up end */}
               <div></div>
             </div>
           ) : (
@@ -348,37 +379,45 @@ const DoctorDashboard = (props) => {
                     </div>
                   </div>
 
-                  {prescriptions.slice(1, 3).map((prescription) => {
-                    return (
-                      <div className="grid grid-cols-4">
-                        <div>
-                          <h1>{convertDatetoString(prescription.createdAt)}</h1>
-                        </div>
-                        <div className="flex">
-                          <h1>Dr. </h1>
-                          <h1>{prescription.doctor}</h1>
-                        </div>
-                        <div>
-                          <h1>{prescription.diagnosis}</h1>
-                        </div>
-                        <Link
-                          to="/doctor/prescription"
-                          onClick={() =>
-                            props.setPrescriptionID(prescription._id)
-                          }
-                        >
-                          <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
-                            <img
-                              src={eye}
-                              className="h-4 my-auto"
-                              alt="preview"
-                            ></img>
-                            <button className="font-bold ml-2">Preview </button>
+                  {prescriptions.length > 0 ? (
+                    prescriptions.slice(1, 3).map((prescription) => {
+                      return (
+                        <div className="grid grid-cols-4">
+                          <div>
+                            <h1>
+                              {convertDatetoString(prescription.createdAt)}
+                            </h1>
                           </div>
-                        </Link>
-                      </div>
-                    );
-                  })}
+                          <div className="flex">
+                            <h1>Dr. </h1>
+                            <h1>{prescription.doctor}</h1>
+                          </div>
+                          <div>
+                            <h1>{prescription.diagnosis}</h1>
+                          </div>
+                          <Link
+                            to="/doctor/prescription"
+                            onClick={() =>
+                              props.setPrescriptionID(prescription._id)
+                            }
+                          >
+                            <div className=" flex  justify-center bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5   ">
+                              <img
+                                src={eye}
+                                className="h-4 my-auto"
+                                alt="preview"
+                              ></img>
+                              <button className="font-bold ml-2">
+                                Preview{" "}
+                              </button>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div className="mx-auto mt-3">No Records Found...</div>
+                  )}
                 </div>
               </div>
             </div>

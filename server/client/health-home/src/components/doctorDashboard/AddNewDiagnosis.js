@@ -24,9 +24,9 @@ const AddNewDiagnosis = (props) => {
   ]);
 
   const [chiefComplaints, setChiefComplaints] = useState([
-    { complaint: "", duration: "" },
+    { complaint: "", duration: "", finding: "" },
   ]);
-  const [clinicalFindings, setClinicalFindings] = useState([{ finding: "" }]);
+  // const [clinicalFindings, setClinicalFindings] = useState([{ finding: "" }]);
   const [investigations, setInvestigations] = useState([{ investigation: "" }]);
   const [advices, setAdvices] = useState([{ advice: "" }]);
 
@@ -47,15 +47,15 @@ const AddNewDiagnosis = (props) => {
   };
   const handleAddChiefComplaint = () => {
     const tempChiefComplaint = [...chiefComplaints];
-    tempChiefComplaint.push({ complaint: "", duration: "" });
+    tempChiefComplaint.push({ complaint: "", duration: "", finding: "" });
     setChiefComplaints(tempChiefComplaint);
   };
 
-  const handleAddClinicalFindings = () => {
-    const tempClinicalFinding = [...clinicalFindings];
-    tempClinicalFinding.push({ finding: "" });
-    setClinicalFindings(tempClinicalFinding);
-  };
+  // const handleAddClinicalFindings = () => {
+  //   const tempClinicalFinding = [...clinicalFindings];
+  //   tempClinicalFinding.push({ finding: "" });
+  //   setClinicalFindings(tempClinicalFinding);
+  // };
 
   const handleAddInvestigation = () => {
     const tempInvestigations = [...investigations];
@@ -78,7 +78,6 @@ const AddNewDiagnosis = (props) => {
       mobile: "",
     },
     chiefComplaints: chiefComplaints,
-    clinicalFindings: clinicalFindings,
     notes: { note: "" },
     diagnosis: { diagno: "" },
     procedureConducted: { procedure: "" },
@@ -165,6 +164,20 @@ const AddNewDiagnosis = (props) => {
                       setPrescription(tempprescription);
                     }}
                   ></input>
+                  <input
+                    placeholder="Clinical Finding"
+                    className=" bg-blue-100  rounded mx-2 px-2 py-1.5 outline-none col-span-1"
+                    value={chiefComplaints.finding}
+                    onChange={(e) => {
+                      let tempChiefComplaint = [...chiefComplaints];
+                      tempChiefComplaint[index].finding = e.target.value;
+                      setChiefComplaints(tempChiefComplaint);
+
+                      let tempprescription = { ...prescription };
+                      tempprescription.chiefComplaints = chiefComplaints;
+                      setPrescription(tempprescription);
+                    }}
+                  ></input>
                   <div className="flex ml-3">
                     <div
                       className=" m-2 h-8 w-16 mt-0  font-poppins font-semibold cursor-pointer "
@@ -187,60 +200,6 @@ const AddNewDiagnosis = (props) => {
                           tempprescription.chiefComplaints = tempChiefComplaint;
                           setPrescription(tempprescription);
                           setChiefComplaints(tempChiefComplaint);
-                        }}
-                      >
-                        <img
-                          src={minus_logo}
-                          className="w-8 h-8"
-                          alt="minus-logo"
-                        ></img>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-              {clinicalFindings.map((clinicalFinding, index) => (
-                <div className="grid grid-cols-6 mt-2">
-                  <h1 className="col-span-1">Clinical findings </h1>
-
-                  <input
-                    placeholder="Clinical Finding"
-                    className=" bg-blue-100  rounded mx-2 px-2 py-1.5 outline-none col-span-1"
-                    value={clinicalFinding.finding}
-                    onChange={(e) => {
-                      let tempClinicalFinding = [...clinicalFindings];
-                      tempClinicalFinding[index].finding = e.target.value;
-                      setClinicalFindings(tempClinicalFinding);
-
-                      let tempprescription = { ...prescription };
-                      tempprescription.clinicalFindings = clinicalFindings;
-                      setPrescription(tempprescription);
-                    }}
-                  ></input>
-
-                  <div className="flex ml-3">
-                    <div
-                      className=" m-2 h-8 w-16 mt-0  font-poppins font-semibold cursor-pointer "
-                      onClick={handleAddClinicalFindings}
-                    >
-                      <img
-                        src={plus_logo}
-                        className="w-8 h-8"
-                        alt="plus-logo"
-                      ></img>
-                    </div>
-                    {clinicalFindings.length > 1 && (
-                      <div
-                        className=" m-2 h-8 w-20 mt-0   font-poppins font-semibold cursor-pointer "
-                        onClick={() => {
-                          let tempClinicalFinding = [...clinicalFindings];
-                          tempClinicalFinding.splice(index, 1);
-
-                          let tempprescription = { ...prescription };
-                          tempprescription.clinicalFindings =
-                            tempClinicalFinding;
-                          setPrescription(tempprescription);
-                          setClinicalFindings(tempClinicalFinding);
                         }}
                       >
                         <img

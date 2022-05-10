@@ -7,10 +7,15 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import dashboard from "../../assets/img/dashboard/dashboard.jpeg";
 
-const AdminSidebar = () => {
+const AdminSidebar = (props) => {
   const navigate = useNavigate();
   const logout = async () => {
     const res = await fetch("/logout");
+    props.settoastCondition({
+      status: "success",
+      message: "Logged out Successfully!!!",
+    });
+    props.setToastShow(true);
     navigate("/");
   };
 

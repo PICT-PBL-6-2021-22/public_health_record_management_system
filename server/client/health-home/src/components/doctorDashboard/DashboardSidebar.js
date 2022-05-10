@@ -3,12 +3,21 @@ import dashboard from "../../assets/img/dashboard/dashboard.jpeg";
 import reports from "../../assets/img/dashboard/report2_pbl.png";
 import patient_history from "../../assets/img/dashboard/patient_history.jpeg";
 import patient_profile from "../../assets/img/dashboard/patient2_pbl.png";
-import logout from "../../assets/img/dashboard/logout.png";
-import { Link, Outlet } from "react-router-dom";
+import logoutimg from "../../assets/img/dashboard/logout.png";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
+const DashboardSidebar = (props) => {
+  const navigate = useNavigate();
+  const logout = async () => {
+    const res = await fetch("/logout");
+    props.settoastCondition({
+      status: "success",
+      message: "Logged out Successfully!!!",
+    });
+    props.setToastShow(true);
+    navigate("/");
+  };
 
-const DashboardSidebar = () => {
-  const [healthID, setHealthID] = useState("");
   const [Toggle, setToggle] = useState("Dashboard");
   return (
     <div className="h-screen overflow-y-hidden w-screen grid grid-cols-12">
@@ -100,8 +109,8 @@ const DashboardSidebar = () => {
         </nav>
 
         <div className=" mx-auto mt-56 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
-          <button className="font-bold  flex items-center">
-            <img src={logout} className="h-4 px-2 " alt="logout"></img>logout
+          <button className="font-bold  flex items-center" onClick={logout}>
+            <img src={logoutimg} className="h-4 px-2 " alt="logout"></img>logout
           </button>
         </div>
       </div>

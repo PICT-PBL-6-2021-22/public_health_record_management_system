@@ -3,11 +3,6 @@ const Patient = require("../models/patient");
 module.exports.add_prescription = async (req, res) => {
   const healthID = req.params.healthID;
   const chiefComplaints = Object.values(req.body.chiefComplaints);
-  const tempClinicalFinding = Object.values(req.body.clinicalFindings);
-  const clinicalFinding = tempClinicalFinding.map((item) => {
-    return item.finding;
-  });
-  console.log(clinicalFinding);
   const medicines = Object.values(req.body.medicines);
   const investigations = Object.values(req.body.investigations);
   const advices = Object.values(req.body.advices);
@@ -30,7 +25,6 @@ module.exports.add_prescription = async (req, res) => {
             diagnosis,
             procedureConducted,
             chiefComplaints,
-            clinicalFinding,
             medicines,
             investigations,
             advices,

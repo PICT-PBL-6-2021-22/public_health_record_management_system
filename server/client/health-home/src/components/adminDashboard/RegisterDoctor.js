@@ -197,7 +197,7 @@ export default function Register() {
               ></input>
             </div>
 
-            <div class="grid grid-cols-3 gap-2 mt-4 mr-4">
+            <div class="grid grid-cols-4 mt-4 mr-4">
               <label class="font-bold text-base px-4">
                 Emergency Contact No.
               </label>

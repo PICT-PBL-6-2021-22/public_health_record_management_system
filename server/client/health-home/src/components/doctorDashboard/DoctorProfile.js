@@ -1,103 +1,176 @@
-import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import Footer from "../landingPage/Footer";
-import { Link } from "react-router-dom";
+
+import patient_card_profile from "../../assets/img/dashboard/admin-card-profile.png";
+import name from "../../assets/img/dashboard/patient-profile-name.png";
+import birth from "../../assets/img/dashboard/patient-profile-birth.png";
+import address from "../../assets/img/dashboard/patient-profile-address.png";
+import phone from "../../assets/img/dashboard/patient-profile-phone.png";
+import mail from "../../assets/img/dashboard/patient-profile-mail.png";
+import blood from "../../assets/img/dashboard/patient-profile-blood.png";
+import hospital from "../../assets/img/dashboard/doctor-profile-hospital.png";
+import hospital_contact from "../../assets/img/dashboard/doctor-profile-contact.png";
+import speciality from "../../assets/img/dashboard/doctor-profile-speciality.png";
+import degree from "../../assets/img/dashboard/doctor-profile-degree.png";
+import home from "../../assets/img/dashboard/doctor-profile-home.png";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DoctorProfile = () => {
+  const navigate = useNavigate();
+  const [doctor, setDoctor] = useState({
+    name: {
+      firstName: "",
+      middleName: "",
+      surName: "",
+    },
+    org: "",
+    orgAddress: {
+      building: "",
+      city: "",
+      taluka: "",
+      district: "",
+      state: "",
+      pincode: "",
+    },
+    emergencyno: "",
+    orgNumber: "",
+    dob: "",
+    mobile: "",
+    email: "",
+    adharCard: "",
+    bloodGroup: "",
+    education: [{ degree: "" }],
+    address: {
+      building: "",
+      city: "",
+      taluka: "",
+      district: "",
+      state: "",
+      pincode: "",
+    },
+    specialization: [{ special: "" }],
+    password: "",
+    _id: "",
+  });
+
+  const convertDatetoString = (dateString) => {
+    let date = new Date(dateString);
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  useEffect(() => {
+    async function getdoctor() {
+      const res = await fetch("/getdoctor");
+      const data = await res.json();
+      if (data.errors) {
+        navigate("/");
+      } else {
+        setDoctor(data.doctor);
+      }
+    }
+    getdoctor();
+  }, []);
+
   return (
-    <body className="font-poppins col-span-10">
-      <div className=" bg-bgprimary h-screen  ">
-        <div className="  mr-6">
-          <div className="flex bg-white shadow-xl items-center p-2 w-1/5 mt-4 m-4 ml-auto ">
-            <img src={doctor_profile} className="h-12" alt="profile"></img>
-            <div className="flex font-bold text-xl ">
-              <h1 className="px-2 ">Hii</h1>
-              <h1>Dr.</h1>
-              <h1 className="">abcd</h1>
-              <h1 className="px-2">!</h1>
+    <body className="font-poppins col-span-10 overflow-y-scroll">
+      <div className="grid grid-cols-2 mt-16">
+        <div className="p-4 m-8 bg-white shadow-md w-2/3 mx-auto rounded-md ">
+          <div className="flex justify-center">
+            <img
+              src={patient_card_profile}
+              className="h-40 w-40 rounded-full border-2  p-4 "
+              alt="patient-profile"
+            />
+          </div>
+          <div className="mt-6">
+            <div className="flex ml-8 ">
+              <img src={name} className="h-8 w-8  " />
+              <div className="flex mt-1">
+                <h2 className="ml-2">Dr.</h2>
+                <h2 className="ml-2">{doctor.name.firstName}</h2>
+                <h2 className="ml-2">{doctor.name.middleName}</h2>
+                <h2 className="ml-2">{doctor.name.surName}</h2>
+              </div>
+            </div>
+            <div className="flex ml-8 mt-4">
+              <img src={birth} className="h-5 w-5 ml-1" />
+              <h2 className="ml-4">{convertDatetoString(doctor.dob)}</h2>
+            </div>
+            <div className="flex ml-8 mt-4">
+              <img src={blood} className="h-6 w-6" />
+              <h2 className="ml-4">{doctor.bloodGroup}</h2>
+            </div>
+            <div className="flex ml-8 mt-4">
+              <img src={phone} className="h-6 w-6 " />
+              <h2 className="ml-4">+91</h2>
+              <h2 className="ml-2">{doctor.mobile}</h2>
+            </div>
+            <div className="flex ml-8 mt-4">
+              <img src={mail} className="h-6 w-5 " />
+              <h2 className="ml-4 ">{doctor.email}</h2>
             </div>
           </div>
-
-          <div className="grid grid-cols-2 gap-10">
-            <div className="grid grid-rows-6 gap-3 bg-white rounded shadow m-4 ml-12 p-8 px-12">
-              <div className="grid grid-cols-4 ">
-                <h1 className="font-bold">Name :</h1>
-                <h1>abcd</h1>
-                <h1>efghi</h1>
-                <h1>jklm</h1>
-              </div>
-              <div className="flex ">
-                <h1 className="font-bold">Birth Date : </h1>
-                <h1 className="mx-2">12/12/2022</h1>
-              </div>
-              <div className="flex ">
-                <h1 className="font-bold">Blood Group : </h1>
-                <h1 className="mx-2">A+</h1>
-              </div>
-              <div className="flex ">
-                <h1 className="font-bold">Mobile Number :</h1>
-                <h1 className="mx-2">1234567890</h1>
-              </div>
-              <div className="flex ">
-                <h1 className="font-bold">Emergency Contact Number :</h1>
-                <h1 className="mx-2">1234567890</h1>
-              </div>
-              <div className="flex ">
-                <h1 className="font-bold">Email :</h1>
-                <h1 className="mx-2">jayeshspatil1602@gmail.com</h1>
-              </div>
-              <div className="flex ">
-                <h1 className="font-bold">Aadhar Card Number : </h1>
-                <h1 className="mx-2">123456789123</h1>
+        </div>
+        <div className="my-2">
+          <div className="p-8 m-2 bg-white shadow-md w-2/3 rounded-md">
+            <div className="flex mt-3">
+              <img src={home} className="h-6 w-6" />
+              <div className="ml-4">
+                <h2>
+                  {`${doctor.address.building},  ${doctor.address.city},  ${doctor.address.taluka},  ${doctor.address.district},  ${doctor.address.state}-  ${doctor.address.pincode}`}
+                </h2>
               </div>
             </div>
-            <div className="bg-white shadow rounded m-4 ml-12 p-8 px-12 ">
-              <div className="flex">
-                <h1 className="font-bold">Address :</h1>
-                <div className="grid grid-rows-3 gap-2 ml-2">
-                  <div className="grid grid-cols-2 gap-4">
-                    <h1>Building/area </h1>
-                    <h1>village/city</h1>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <h1>taluka</h1>
-                    <h1>District</h1>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <h1>Pin code</h1>
-                    <h1>State</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="flex mt-3">
-                <h1 className="font-bold">Hospital Name :</h1>
-                <h1 className="ml-2">saikrupa hospital</h1>
-              </div>
-              <div className="flex mt-3">
-                <h1 className="font-bold">Hospital Contact No. :</h1>
-                <h1 className="ml-2">1234567890</h1>
-              </div>
-              <div className="flex mt-3">
-                <h1 className="font-bold">Education :</h1>
-                <div className="grid grid-cols-3 ml-2">
-                  <h1 className="">MBBS</h1>
-                  <h1></h1>
-                  <h1></h1>
-                </div>
-              </div>
+            <div className="flex mt-4">
+              <img src={degree} className="h-6 w-6" />
+              <h1 className="ml-4">
+                {doctor.education.map((i) => {
+                  return `${i.degree}  `;
+                })}
+              </h1>
+            </div>
+            <div className="flex mt-4">
+              <img src={speciality} className="h-6 w-6" />
+              <h1 className="ml-4">
+                {doctor.specialization.map((i) => {
+                  return `${i.special}  `;
+                })}
+              </h1>
+            </div>
+          </div>
+          <div className="p-8 m-2 bg-white shadow-md w-2/3 rounded-md mt-10">
+            <h1 className="font-bold flex justify-center text-xl">
+              Hospital Details
+            </h1>
+            <div className="flex mt-4 ">
+              <img src={hospital} className="h-6 w-6" />
+              <h1 className="ml-4"> {doctor.org}</h1>
+            </div>
 
-              <div className="flex mt-3">
-                <h1 className="font-bold">Specialisation :</h1>
-                <div className="grid grid-cols-2 ml-2">
-                  <h1 className="">Heart surgeon</h1>
-                  <h1></h1>
-                </div>
+            <div className="flex mt-3">
+              <img src={hospital_contact} className="w-5 h-5 " />
+
+              <h1 className="ml-4">{doctor.orgNumber}</h1>
+            </div>
+            {/* <div className="flex mt-3">
+              <img src={mail} className="w-5 h-6 " />
+
+              <h1 className="mx-4">jayeshspatil1602@gmail.com</h1>
+            </div> */}
+
+            <div className="flex mt-6">
+              <img src={address} className="h-7 w-8" />
+              <div className="ml-4 ">
+                <h2>
+                  {`${doctor.orgAddress.building},  ${doctor.orgAddress.city},  ${doctor.orgAddress.taluka},  ${doctor.orgAddress.district},  ${doctor.orgAddress.state}-  ${doctor.orgAddress.pincode}`}
+                </h2>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="-my-16">
-        <Footer></Footer>
       </div>
     </body>
   );

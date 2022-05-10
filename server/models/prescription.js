@@ -46,11 +46,9 @@ const prescriptionSchema = new mongoose.Schema(
         duration: {
           type: Number,
         },
-      },
-    ],
-    clinicalFinding: [
-      {
-        type: String,
+        finding: {
+          type: String,
+        },
       },
     ],
     notes: {

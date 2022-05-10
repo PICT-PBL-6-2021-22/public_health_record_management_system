@@ -6,7 +6,7 @@ import minus_logo from "../../assets/img/dashboard/minus2_pbl.png";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from "react-loading";
 
-export default function Register() {
+export default function Register(props) {
   const navigate = useNavigate();
   const [Loading, setLoading] = useState(false);
   const [Toggle, setToggle] = useState("Patient");
@@ -65,6 +65,7 @@ export default function Register() {
   });
 
   const handleRegisterPatient = async (e) => {
+    e.preventDefault();
     setPasswordError("");
     if (patient.password === confirmPassword) {
       setLoading(true);
@@ -82,9 +83,19 @@ export default function Register() {
       if (data.errors) {
         setLoading(false);
         setErrors(data.errors);
+        props.settoasetCondition({
+          status: "error",
+          message: "Please Enter all fields correctly!",
+        });
+        props.setToastShow(true);
         console.log(errors);
       } else {
         setLoading(false);
+        props.settoasetCondition({
+          status: "success",
+          message: "Your Registration done Successfully!",
+        });
+        props.setToastShow(true);
         navigate("/patient/dashboard");
       }
     } else {
@@ -102,7 +113,7 @@ export default function Register() {
 
           <form
             className="font-poppins lg:ml-60  lg:px-8 lg:py-4 bg-white shadow-lg rounded max-w-screen-lg mt-8 mb-4 "
-            onClick={handleRegisterPatient}
+            onSubmit={handleRegisterPatient}
           >
             <div className="flex   mt-2 bg-bgsecondary w-fit  justify-between rounded mx-auto">
               <button

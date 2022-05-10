@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import profile from "../../assets/img/landingPage/profile.png";
 import ReactLoading from "react-loading";
-export default function Login() {
+export default function Login(props) {
   const navigate = useNavigate();
   const [Loading, setLoading] = useState(false);
   const [Toggle, setToggle] = useState("Patient");
@@ -35,6 +35,11 @@ export default function Login() {
     } else {
       // console.log(data.errors);
       setLoading(false);
+      props.settoastCondition({
+        status: "success",
+        message: "Logged in Successfully!!!",
+      });
+      props.setToastShow(true);
       navigate("/patient/dashboard");
     }
   };
@@ -57,6 +62,11 @@ export default function Login() {
     } else {
       // console.log(data.errors);
       setLoading(false);
+      props.settoastCondition({
+        status: "success",
+        message: "Logged in Successfully!!!",
+      });
+      props.setToastShow(true);
       if (path == "/login/doctor") {
         navigate("/doctor/dashboard");
       } else {

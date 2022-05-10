@@ -5,7 +5,7 @@ const PatientListCompo = (props) => {
   const [dob, setDob] = useState("");
   useEffect(() => {
     const date = new Date(props.patient.dob);
-    setDob(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
+    setDob(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
   }, []);
 
   const deletePatient = async () => {

@@ -5,7 +5,6 @@ const maxAge = 3 * 24 * 60 * 60;
 const handleError = (err) => {
   let errors = {};
 
-  console.log(err.code);
   // incorrect email
   if (err.message === "Invalid HealthID") {
     errors.healthID = "That HealthID is not registered";
@@ -32,7 +31,6 @@ const handleError = (err) => {
 };
 
 module.exports.patient_register = async (req, res) => {
-  console.log(req.body.diseases);
   const diseases = Object.values(req.body.diseases);
   const {
     name,
@@ -45,10 +43,6 @@ module.exports.patient_register = async (req, res) => {
     password,
     contactPerson,
   } = req.body;
-
-  // let diseaseList = Object.values(diseases);
-  // diseases = diseaseList;
-  // console.log(diseases);
 
   const healthID = adharCard;
   try {
@@ -65,11 +59,10 @@ module.exports.patient_register = async (req, res) => {
       diseases,
       contactPerson,
     });
-    // const token = createToken(patient._id);
-    // res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    const token = createToken(patient._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).json({ patient });
   } catch (err) {
-    console.log(err);
     const errors = handleError(err);
     res.status(404).json({ errors });
   }
@@ -83,7 +76,6 @@ module.exports.patient_login = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).json({ patient });
   } catch (err) {
-    console.log(err);
     const errors = handleError(err);
     res.status(404).json({ errors });
   }

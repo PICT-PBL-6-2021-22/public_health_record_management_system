@@ -4,7 +4,7 @@ import Vector from "../assets/img/landingPage/vector.svg";
 import Login from "../components/landingPage/Login";
 import Footer from "../components/landingPage/Footer";
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   return (
     <div className="h-screen max-h-min flex flex-col">
       <Navbar></Navbar>
@@ -16,7 +16,10 @@ export default function LandingPage() {
           className="lg:w-1/2 lg:my-auto lg:mx-auto mt-24"
         />
         <div className="lg:ml-auto lg:w-1/2 w-screen">
-          <Login></Login>
+          <Login
+            setToastShow={props.setToastShow}
+            settoastCondition={props.settoastCondition}
+          ></Login>
         </div>
       </div>
       <div className="mt-auto relative bottom-0">

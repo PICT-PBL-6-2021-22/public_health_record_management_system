@@ -23,27 +23,98 @@ import PatientReportsDoctorView from "./components/doctorDashboard/PatientReport
 import PatientHistoryDoctorView from "./components/doctorDashboard/PatientHistoryDoctorView";
 import PreviewPrescriptionDoctorView from "./components/doctorDashboard/PreviewPrescriptionDoctorView";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [healthID, setHealthID] = useState("");
   const [prescriptionID, setPrescriptionID] = useState("");
+  const [toastShow, setToastShow] = useState(false);
+  const [toastCondition, settoastCondition] = useState({
+    status: "",
+    message: "",
+  });
+
+  if (toastShow) {
+    if (toastCondition.status === "success") {
+      toast.success(toastCondition.message);
+    } else if (toastCondition.status === "error") {
+      toast.error(toastCondition.message);
+    } else if (toastCondition.status === "warning") {
+      toast.warn(toastCondition.message);
+    } else if (toastCondition.status == "info") {
+      toast.info(toastCondition.message);
+    }
+    settoastCondition({
+      status: "",
+      message: "",
+    });
+    setToastShow(false);
+  }
 
   return (
     <div className="bg-bgprimary flex">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/"
+          element={
+            <LandingPage
+              settoastCondition={settoastCondition}
+              setToastShow={setToastShow}
+            />
+          }
+        />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="Register" element={<RegisterPatient />} />
-        <Route path="patient" element={<PatientProfileSideBar />}>
-          <Route path="dashboard" element={<PatientDashboard />} />
-          <Route path="reports" element={<PatientReports />} />
-          <Route path="history" element={<PatientHistory />} />
-          <Route path="profile" element={<PatientProfile />} />
-          <Route path="prescription" element={<PreviewPrescription />} />
+        <Route
+          path="Register"
+          element={
+            <RegisterPatient
+              setToastShow={setToastShow}
+              settoastCondition={settoastCondition}
+            />
+          }
+        />
+        <Route
+          path="patient"
+          element={
+            <PatientProfileSideBar
+              settoastCondition={settoastCondition}
+              setToastShow={setToastShow}
+            />
+          }
+        >
+          <Route
+            path="dashboard"
+            element={<PatientDashboard setPrescriptionID={setPrescriptionID} />}
+          />
+          <Route
+            path="reports"
+            element={<PatientReports setPrescriptionID={setPrescriptionID} />}
+          />
+          <Route
+            path="history"
+            element={<PatientHistory setPrescriptionID={setPrescriptionID} />}
+          />
+          <Route
+            path="profile"
+            element={<PatientProfile setPrescriptionID={setPrescriptionID} />}
+          />
+          <Route
+            path="prescription"
+            element={<PreviewPrescription prescriptionID={prescriptionID} />}
+          />
         </Route>
 
-        <Route path="doctor" element={<DoctorDashboardSidebar />}>
+        <Route
+          path="doctor"
+          element={
+            <DoctorDashboardSidebar
+              setToastShow={setToastShow}
+              settoastCondition={settoastCondition}
+            />
+          }
+        >
           <Route
             path="dashboard"
             element={
@@ -51,6 +122,8 @@ function App() {
                 healthID={healthID}
                 setHealthID={setHealthID}
                 setPrescriptionID={setPrescriptionID}
+                setToastShow={setToastShow}
+                settoastCondition={settoastCondition}
               />
             }
           />
@@ -78,7 +151,13 @@ function App() {
           />
           <Route
             path="addDiagno"
-            element={<AddNewDiagnosis healthID={healthID} />}
+            element={
+              <AddNewDiagnosis
+                healthID={healthID}
+                setToastShow={setToastShow}
+                settoastCondition={settoastCondition}
+              />
+            }
           />
           <Route
             path="prescription"
@@ -91,13 +170,54 @@ function App() {
           />
         </Route>
 
-        <Route path="admin" element={<AdminSidebar />}>
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="doctorslist" element={<DoctorList />} />
-          <Route path="patientslist" element={<PatientList />} />
-          <Route path="registerdoctor" element={<RegisterDoctor />} />
+        <Route
+          path="admin"
+          element={
+            <AdminSidebar
+              settoastCondition={settoastCondition}
+              setToastShow={setToastShow}
+            />
+          }
+        >
+          <Route
+            path="dashboard"
+            element={
+              <AdminDashboard
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
+          />
+          <Route
+            path="doctorslist"
+            element={
+              <DoctorList
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
+          />
+          <Route
+            path="patientslist"
+            element={
+              <PatientList
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
+          />
+          <Route
+            path="registerdoctor"
+            element={
+              <RegisterDoctor
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
+          />
         </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
