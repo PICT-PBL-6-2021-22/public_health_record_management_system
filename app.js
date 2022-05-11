@@ -33,6 +33,12 @@ mongoose
     )
   );
 // app.get("/", (req, res) => res.send("server listening at 5000 port!"));
+app.use(authRoutes);
+app.use(registerRoute);
+app.use(doctorRoute);
+app.use(patientRoutes);
+app.use(adminRoutes);
+app.use(logoutRoute);
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/build"));
   const path = require("path");
@@ -40,9 +46,3 @@ if (process.env.NODE_ENV == "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-app.use(authRoutes);
-app.use(registerRoute);
-app.use(doctorRoute);
-app.use(patientRoutes);
-app.use(adminRoutes, requireAdminAuth);
-app.use(logoutRoute);
