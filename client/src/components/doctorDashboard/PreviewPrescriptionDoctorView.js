@@ -5,24 +5,9 @@ import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import { useEffect, useState } from "react";
 
 const PreviewPrescriptionDoctorView = (props) => {
-  //   function printPrescription() {
-  //     var mywindow = window.open("", "PRINT", "height=full,width=full");
+  // printprescriptionstart
 
-  //     mywindow.document.write(
-  //       "<html><head><title>" + document.title + "</title> "
-  //     );
-  //     mywindow.document.write("</head><body >");
-  //     mywindow.document.write("<h1>" + document.title + "</h1>");
-  //     mywindow.document.write(document.getElementById("prescription").innerHTML);
-  //     mywindow.document.write("</body></html>");
-  //     // necessary for IE >= 10*/
-
-  //     mywindow.print();
-  //     mywindow.close();
-
-  //     return true;
-  //   }
-
+  // printprescriptionend
   const convertDatetoString = (dateString) => {
     let date = new Date(dateString);
     let day = date.getDate();
@@ -123,21 +108,6 @@ const PreviewPrescriptionDoctorView = (props) => {
       className="body h-screen col-span-10 font-poppins   overflow-y-scroll scroll-m-0"
       id="prescription"
     >
-      {/* <iframe id="ifmcontentstoprint" className=""></iframe> */}
-      {/* <button onClick={() => printPrescription()}>Print</button> */}
-      {/* <Link to="/patient/profile">
-        <button className="flex bg-white rounded shadow  px-4  h-14 ml-auto mr-48 mt-4">
-          <img
-            src={patient_profile}
-            className="h-14 p-1 rounded-2xl"
-            alt="profile"
-          ></img>
-          <div className="mt-4 ml-4  font-bold font-poppins">
-            <h1>abcd xyz </h1>
-          </div>
-        </button>
-      </Link> */}
-
       <div className="w-3/4  ml-32 bg-white shadow-xl p-8 mb-4 mt-6">
         <div className="grid grid-cols-2 border-b-2 border-black">
           <div className="m-2 ">
