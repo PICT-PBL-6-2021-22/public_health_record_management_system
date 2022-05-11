@@ -88,7 +88,6 @@ export default function Register(props) {
           message: "Please enter all field properly!!!",
         });
         props.setToastShow(true);
-        navigate("/");
       } else {
         setLoading(false);
         props.settoastCondition({
