@@ -8,6 +8,9 @@
     "start": "node app.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
+  "engine": {
+    "node": "14.17.0"
+  },
   "author": "PBL_6",
   "license": "ISC",
   "dependencies": {
