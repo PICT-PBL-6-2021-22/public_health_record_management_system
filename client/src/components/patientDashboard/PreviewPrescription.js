@@ -173,11 +173,7 @@ const PreviewPrescription = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="flex">
-        <h1 className="font-bold">Referred by :</h1>
-        <h4 className="ml-2">Dr.</h4>
-        <h4>narayan rane</h4>
-      </div> */}
+
         <div className="grid grid-rows-2 mt-4 ">
           <div className="grid grid-cols-2 justify-center border-t-2 border-b-2 border-black ">
             <h1 className="ml-2 font-bold">Chief complaints</h1>
