@@ -143,17 +143,13 @@ const PreviewPrescription = (props) => {
               <h2 className="font-bold">Phone no.</h2>
               <h2 className="ml-2">{prescription.hospital.mobile}</h2>
             </div>
-            {/* <div className="flex">
-            <h2 className="font-bold">Closed :</h2>
-            <h2 className="ml-2">sunday</h2>
-          </div> */}
           </div>
         </div>
         <div className="grid grid-cols-3 mt-4">
           <div className="col-span-2">
             <div className="flex">
               <h1 className="font-bold">Health ID : </h1>
-              <h4 className="ml-2">{props.healthID}</h4>
+              <h4 className="ml-2">{patient.healthID}</h4>
             </div>
             <div className="flex">
               <h1 className="font-bold">Patient Name : </h1>
