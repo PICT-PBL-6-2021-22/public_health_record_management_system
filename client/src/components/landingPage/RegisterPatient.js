@@ -164,7 +164,7 @@ export default function Register(props) {
                 </label>
                 <div>
                   <input
-                    className="bg-blue-100 rounded lg:h-10 lg:pl-4 mt-4 uppercase lg:text-md text-sm h-8 px-2"
+                    className="bg-blue-100 rounded lg:h-10 lg:pl-4 mt-4 lg:text-md text-sm h-8 px-2"
                     required
                     placeholder="first name"
                     value={patient.name.firstName}
@@ -176,7 +176,7 @@ export default function Register(props) {
                   ></input>
                 </div>
                 <input
-                  className="bg-blue-100 rounded lg:h-10 lg:pl-4 mt-4 uppercase lg:text-md text-sm h-8 px-2"
+                  className="bg-blue-100 rounded lg:h-10 lg:pl-4 mt-4 lg:text-md text-sm h-8 px-2"
                   required
                   placeholder="middle name"
                   value={patient.name.middleName}
@@ -187,7 +187,7 @@ export default function Register(props) {
                   }}
                 ></input>
                 <input
-                  className="bg-blue-100 rounded lg:h-10 lg:pl-4 mt-4 uppercase lg:text-md text-sm h-8 px-2"
+                  className="bg-blue-100 rounded lg:h-10 lg:pl-4 mt-4 lg:text-md text-sm h-8 px-2"
                   required
                   placeholder="last name"
                   value={patient.name.surName}
@@ -198,9 +198,6 @@ export default function Register(props) {
                   }}
                 ></input>
               </div>
-              {/* <span className="text-xs text-red-500 py-1">
-                {errors.name.firstName}
-              </span> */}
               <div className="lg:grid grid-cols-4 gap-2 mt-4 mr-4">
                 <label className="font-bold lg:text-xl px-4 ">Birthdate</label>
                 <input

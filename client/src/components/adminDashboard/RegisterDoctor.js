@@ -129,7 +129,7 @@ export default function Register(props) {
                 Doctor Name
               </label>
               <input
-                class="bg-blue-100 rounded h-10 pl-4 mt-4 uppercase"
+                class="bg-blue-100 rounded h-10 pl-4 mt-4"
                 required
                 placeholder="first name"
                 value={doctor.name.firstName}
@@ -140,7 +140,7 @@ export default function Register(props) {
                 }}
               ></input>
               <input
-                class="bg-blue-100 rounded h-10 pl-4 mt-4 uppercase"
+                class="bg-blue-100 rounded h-10 pl-4 mt-4"
                 required
                 placeholder="middle name"
                 value={doctor.name.middleName}
@@ -151,7 +151,7 @@ export default function Register(props) {
                 }}
               ></input>
               <input
-                class="bg-blue-100 rounded h-10 pl-4 mt-4 uppercase"
+                class="bg-blue-100 rounded h-10 pl-4 mt-4 "
                 required
                 placeholder="last name"
                 value={doctor.name.surName}
