@@ -5,7 +5,7 @@ import minus_logo from "../../assets/img/dashboard/minus2_pbl.png";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from "react-loading";
 
-export default function Register() {
+export default function Register(props) {
   const navigate = useNavigate();
   const [Loading, setLoading] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -75,13 +75,20 @@ export default function Register() {
       });
 
       const data = await res.json();
-      console.log(data);
-      if (data.errors) {
-        setLoading(false);
-        setErrors(data.errors);
-        console.log(errors);
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
+        navigate("/");
       } else {
         setLoading(false);
+        props.settoastCondition({
+          status: "success",
+          message: "Doctor Registration done Successfully!!!",
+        });
+        props.setToastShow(true);
         navigate("/admin/dashboard");
       }
     } else {

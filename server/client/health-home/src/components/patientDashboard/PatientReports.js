@@ -59,7 +59,12 @@ const PatientReports = (props) => {
     async function getpatient() {
       const res = await fetch("/getpatient");
       const data = await res.json();
-      if (data.errors) {
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
       } else {
         setPatient(data.patient);

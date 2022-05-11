@@ -58,7 +58,12 @@ const PatientReportsDoctorView = (props) => {
     async function getdoctor() {
       const res = await fetch("/getdoctor");
       const data = await res.json();
-      if (data.errors) {
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
       } else {
         setDoctor(data.doctor);
@@ -69,7 +74,12 @@ const PatientReportsDoctorView = (props) => {
         const res = await fetch(`/searchpatient/${props.healthID}`);
         const data = await res.json();
 
-        if (data.errors) {
+        if (data.AuthError) {
+          props.settoastCondition({
+            status: "info",
+            message: "Please Login to proceed!!!",
+          });
+          props.setToastShow(true);
           navigate("/");
         } else {
           setPatient(data.patient);

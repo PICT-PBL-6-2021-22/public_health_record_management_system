@@ -83,15 +83,14 @@ export default function Register(props) {
       if (data.errors) {
         setLoading(false);
         setErrors(data.errors);
-        props.settoasetCondition({
+        props.settoastCondition({
           status: "error",
           message: "Please Enter all fields correctly!",
         });
         props.setToastShow(true);
-        console.log(errors);
       } else {
         setLoading(false);
-        props.settoasetCondition({
+        props.settoastCondition({
           status: "success",
           message: "Your Registration done Successfully!",
         });

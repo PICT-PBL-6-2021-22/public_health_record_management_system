@@ -77,19 +77,34 @@ const PreviewPrescription = (props) => {
     async function fetchprescription() {
       const res = await fetch(`/prescription/${props.prescriptionID}`);
       const data = await res.json();
-      console.log(data);
-      if (data.error) {
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
+      } else if (data.error) {
+        props.settoastCondition({
+          status: "error",
+          message: "Something went Wrong!!!",
+        });
+        props.setToastShow(true);
+        navigate("/patient/dashboard");
       } else {
         setPrescription(data.prescription[0]);
-        // console.log(prescription);
       }
     }
     async function fetchpatient() {
       const res = await fetch("/getpatient");
       const data = await res.json();
 
-      if (data.errors) {
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
       } else {
         setPatient(data.patient);

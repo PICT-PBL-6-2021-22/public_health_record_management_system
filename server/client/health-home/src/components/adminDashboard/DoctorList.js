@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DoctorListCompo from "./DoctorListCompo";
-const DoctorList = () => {
+const DoctorList = (props) => {
   const navigate = useNavigate();
   const [doctorList, setDoctorList] = useState([]);
   useEffect(() => {
@@ -10,7 +10,12 @@ const DoctorList = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if (data.errors) {
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
       } else {
         setDoctorList(data.doctorlist);
@@ -42,6 +47,8 @@ const DoctorList = () => {
                 doctor={doctor}
                 index={index}
                 id={doctor._id}
+                settoastCondition={props.settoastCondition}
+                setToastShow={props.setToastShow}
               />
             );
           })

@@ -90,8 +90,12 @@ const AddNewDiagnosis = (props) => {
     async function getDoctor() {
       const res = await fetch("/getdoctor");
       const data = await res.json();
-      if (data.errors) {
-        navigate("/");
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
       }
       setDoctor(data.doctor);
       const tempprescription = { ...prescription };
@@ -116,6 +120,21 @@ const AddNewDiagnosis = (props) => {
       body: JSON.stringify(prescription),
     });
     const data = await res.json();
+    if (data.AuthError) {
+      props.settoastCondition({
+        status: "info",
+        message: "Please Login to proceed!!!",
+      });
+      props.setToastShow(true);
+      navigate("/");
+    }
+    if (data.msg) {
+      props.settoastCondition({
+        status: "error",
+        message: "Please fill all fields properly!!!",
+      });
+      props.setToastShow(true);
+    }
     setLoading(false);
     navigate("/doctor/dashboard");
   };

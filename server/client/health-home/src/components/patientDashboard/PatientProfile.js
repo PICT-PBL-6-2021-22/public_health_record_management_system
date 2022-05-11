@@ -10,7 +10,7 @@ import healthid from "../../assets/img/dashboard/patient-profile-healthid.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const PatientProfile = () => {
+const PatientProfile = (props) => {
   const navigate = useNavigate();
   const [patient, setPatient] = useState({
     healthID: "",
@@ -56,7 +56,12 @@ const PatientProfile = () => {
     async function getpatient() {
       const res = await fetch("/getpatient");
       const data = await res.json();
-      if (data.errors) {
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
         navigate("/");
       } else {
         setPatient(data.patient);

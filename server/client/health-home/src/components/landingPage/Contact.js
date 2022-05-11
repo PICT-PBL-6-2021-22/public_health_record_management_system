@@ -1,20 +1,31 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import ReactLoading from "react-loading";
 
-const Contact = () => {
+const Contact = (props) => {
   const form = useRef();
+  const [Loading, setLoading] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    emailjs.sendForm('service_ytpdnfv', 'template_sel0xjo', form.current, 'Qc4IEdSfGeohecLaR');
+    setLoading(true);
+    emailjs.sendForm(
+      "service_ytpdnfv",
+      "template_sel0xjo",
+      form.current,
+      "Qc4IEdSfGeohecLaR"
+    );
     e.target.reset();
-    
-      
+    setLoading(false);
+    props.settoastCondition({
+      status: "success",
+      message: "Message Sent Successfully!!!",
+    });
+    props.setToastShow(true);
   };
-  
+
   return (
     <div className="body w-full ">
       <Navbar></Navbar>
@@ -56,7 +67,6 @@ const Contact = () => {
           </div>
 
           <div>
-            
             <div className="bg-white p-10 rounded shadow-lg lg:mr-12 mt-12 mb-8 m-4">
               <form className="grid  gap-8 " ref={form} onSubmit={sendEmail}>
                 <div className="grid grid-cols-4  ">
@@ -96,9 +106,18 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 <div className="flex justify-center ">
-                  <button className="text-lg mt-2 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
-                    Submit
-                  </button>
+                  {Loading ? (
+                    <ReactLoading
+                      type={"bubbles"}
+                      color={""}
+                      height={"9%"}
+                      width={"9%"}
+                    />
+                  ) : (
+                    <button className="text-lg mt-2 bg-primary py-1 px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary">
+                      Submit
+                    </button>
+                  )}
                 </div>
               </form>
             </div>

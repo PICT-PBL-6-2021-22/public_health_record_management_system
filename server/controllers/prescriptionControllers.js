@@ -11,7 +11,6 @@ module.exports.add_prescription = async (req, res) => {
   const procedureConducted = req.body.procedureConducted.procedure;
   const { doctor, doctormobile, hospital } = req.body;
 
-  console.log(req.body);
   try {
     const patient = await Patient.findOneAndUpdate(
       { healthID },
@@ -34,7 +33,6 @@ module.exports.add_prescription = async (req, res) => {
     );
     res.status(200).json({ patient });
   } catch (err) {
-    console.log(err);
     res.status(404).json({ msg: "Something Went Wrong!" });
   }
 };

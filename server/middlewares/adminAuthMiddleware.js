@@ -6,8 +6,8 @@ const requireAdminAuth = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
       if (err) {
-        let errors = { error: "Admin is not authenticated!" };
-        res.status(401).send({ errors });
+        let AuthError = { error: "Admin is not authenticated!" };
+        res.status(401).send({ AuthError });
       } else {
         const admin = await Admin.findById(decodedToken.id);
         req.Admin = admin;
@@ -15,8 +15,8 @@ const requireAdminAuth = (req, res, next) => {
       }
     });
   } else {
-    let errors = { error: "User is not authenticated!" };
-    res.status(401).send({ errors });
+    let AuthError = { error: "Admin is not authenticated!" };
+    res.status(401).send({ AuthError });
   }
 };
 

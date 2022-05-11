@@ -15,7 +15,7 @@ import home from "../../assets/img/dashboard/doctor-profile-home.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const DoctorProfile = () => {
+const DoctorProfile = (props) => {
   const navigate = useNavigate();
   const [doctor, setDoctor] = useState({
     name: {
@@ -56,7 +56,7 @@ const DoctorProfile = () => {
   const convertDatetoString = (dateString) => {
     let date = new Date(dateString);
     let day = date.getDate();
-    let month = date.getMonth();
+    let month = date.getMonth() + 1;
     let year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -65,8 +65,12 @@ const DoctorProfile = () => {
     async function getdoctor() {
       const res = await fetch("/getdoctor");
       const data = await res.json();
-      if (data.errors) {
-        navigate("/");
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
       } else {
         setDoctor(data.doctor);
       }

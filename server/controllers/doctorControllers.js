@@ -6,7 +6,6 @@ module.exports.search_patient = async (req, res) => {
     const patient = await Patient.findOne({ healthID });
     res.status(200).json({ patient });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ error: "Something went wrong..." });
   }
 };

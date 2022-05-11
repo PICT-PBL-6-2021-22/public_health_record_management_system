@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className=" mt-auto py-2 flex justify-center items-center bg-white shadow-inner">
       <h1 className="text-base font-poppins font-semibold">
-        Copyright PBL_6 Group
+        Developed with ❤️ by PBL_6 Group
       </h1>
     </div>
   );

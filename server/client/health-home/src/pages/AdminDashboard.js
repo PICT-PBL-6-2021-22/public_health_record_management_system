@@ -3,16 +3,24 @@ import admin_profile from "../assets/img/dashboard/admin_profile.png";
 import search from "../assets/img/dashboard/search2.png";
 import Footer from "../components/landingPage/Footer";
 import PatientList from "../components/adminDashboard/PatientList";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const AdminDashboard = () => {
+const AdminDashboard = (props) => {
   const [adminEmail, setAdminEmail] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
     async function fetchAdmin() {
       const res = await fetch("/getadmin");
       const data = await res.json();
+      if (data.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
+        navigate("/");
+      }
       setAdminEmail(data.admin.email);
     }
     fetchAdmin();

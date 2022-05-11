@@ -27,13 +27,11 @@ export default function Login(props) {
 
     const data = await res.json();
 
-    // window.alert(data);
     if (data.errors) {
       setUsernameError(data.errors.healthID);
       setPasswordError(data.errors.password);
       setLoading(false);
     } else {
-      // console.log(data.errors);
       setLoading(false);
       props.settoastCondition({
         status: "success",
@@ -58,9 +56,23 @@ export default function Login(props) {
     });
 
     const data = await res.json();
-    if (data.errors) {
+    if (data.err) {
+      setLoading(false);
+      props.settoastCondition({
+        status: "error",
+        message: "Wrong Credentials!!!",
+      });
+      props.setToastShow(true);
+    } else if (data.errors) {
+      setUsernameError(data.errors.healthID);
+      setPasswordError(data.errors.password);
+      setLoading(false);
+      props.settoastCondition({
+        status: "error",
+        message: "Wrong Credentials!!!",
+      });
+      props.setToastShow(true);
     } else {
-      // console.log(data.errors);
       setLoading(false);
       props.settoastCondition({
         status: "success",

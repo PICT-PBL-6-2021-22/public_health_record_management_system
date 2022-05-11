@@ -25,6 +25,7 @@ import PreviewPrescriptionDoctorView from "./components/doctorDashboard/PreviewP
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Page_404 from "./pages/Page_404";
 
 function App() {
   const [healthID, setHealthID] = useState("");
@@ -65,7 +66,15 @@ function App() {
           }
         />
         <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
+        <Route
+          path="contact"
+          element={
+            <Contact
+              settoastCondition={settoastCondition}
+              setToastShow={setToastShow}
+            />
+          }
+        />
         <Route
           path="Register"
           element={
@@ -86,23 +95,53 @@ function App() {
         >
           <Route
             path="dashboard"
-            element={<PatientDashboard setPrescriptionID={setPrescriptionID} />}
+            element={
+              <PatientDashboard
+                setPrescriptionID={setPrescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
           />
           <Route
             path="reports"
-            element={<PatientReports setPrescriptionID={setPrescriptionID} />}
+            element={
+              <PatientReports
+                setPrescriptionID={setPrescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
           />
           <Route
             path="history"
-            element={<PatientHistory setPrescriptionID={setPrescriptionID} />}
+            element={
+              <PatientHistory
+                setPrescriptionID={setPrescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
           />
           <Route
             path="profile"
-            element={<PatientProfile setPrescriptionID={setPrescriptionID} />}
+            element={
+              <PatientProfile
+                setPrescriptionID={setPrescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
           />
           <Route
             path="prescription"
-            element={<PreviewPrescription prescriptionID={prescriptionID} />}
+            element={
+              <PreviewPrescription
+                prescriptionID={prescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
           />
         </Route>
 
@@ -133,6 +172,8 @@ function App() {
               <PatientReportsDoctorView
                 healthID={healthID}
                 setPrescriptionID={setPrescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
               />
             }
           />
@@ -142,12 +183,20 @@ function App() {
               <PatientHistoryDoctorView
                 healthID={healthID}
                 setPrescriptionID={setPrescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
               />
             }
           />
           <Route
             path="profile"
-            element={<DoctorProfile healthID={healthID} />}
+            element={
+              <DoctorProfile
+                healthID={healthID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
           />
           <Route
             path="addDiagno"
@@ -165,6 +214,8 @@ function App() {
               <PreviewPrescriptionDoctorView
                 healthID={healthID}
                 prescriptionID={prescriptionID}
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
               />
             }
           />
@@ -216,6 +267,7 @@ function App() {
             }
           />
         </Route>
+        <Route path="*" element={<Page_404 />} />
       </Routes>
       <ToastContainer />
     </div>

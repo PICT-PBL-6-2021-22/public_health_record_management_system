@@ -61,10 +61,10 @@ const DoctorDashboard = (props) => {
     async function getdoctor() {
       const res = await fetch("/getdoctor");
       const data = await res.json();
-      if (data.errors) {
+      if (data.AuthError) {
         props.settoastCondition({
           status: "info",
-          message: "Please login to see this page!!!",
+          message: "Please Login to Proceed!!!",
         });
         props.setToastShow(true);
         navigate("/");
@@ -78,14 +78,21 @@ const DoctorDashboard = (props) => {
         const res = await fetch(`/searchpatient/${props.healthID}`);
         const data = await res.json();
 
-        if (data.errors) {
+        if (data.AuthError) {
           setLoading(false);
           props.settoastCondition({
             status: "info",
-            message: "Please login to see this page!!!",
+            message: "Please Login to proceed!!!",
           });
           props.setToastShow(true);
           navigate("/");
+        } else if (data.error) {
+          setLoading(false);
+          props.settoastCondition({
+            status: "error",
+            message: "This HealthID doesn't exist!!!",
+          });
+          props.setToastShow(true);
         } else {
           setPatient(data.patient);
           if (data.patient.prescriptions) {
@@ -111,14 +118,21 @@ const DoctorDashboard = (props) => {
       const res = await fetch(`/searchpatient/${props.healthID}`);
       const data = await res.json();
 
-      if (data.errors) {
+      if (data.AuthError) {
+        setLoading(false);
         props.settoastCondition({
           status: "info",
-          message: "Please login to see this page!!!",
+          message: "Please Login to proceed!!!",
         });
         props.setToastShow(true);
         navigate("/");
+      } else if (data.error) {
         setLoading(false);
+        props.settoastCondition({
+          status: "error",
+          message: "This HealthID doesn't exist!!!",
+        });
+        props.setToastShow(true);
       } else {
         setPatient(data.patient);
         if (data.patient.prescriptions) {

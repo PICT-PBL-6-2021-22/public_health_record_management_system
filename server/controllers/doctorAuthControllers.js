@@ -38,10 +38,6 @@ module.exports.doctor_register = async (req, res) => {
 
     res.status(200).json({ doctor });
   } catch (err) {
-    // let errors = handleError(err);
-    // errors = err.errors;
-    // errors = handleError(errors);
-    // console.log(err);
     res.status(404).json({ err });
   }
 };
@@ -54,10 +50,6 @@ module.exports.doctor_login = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).json({ doctor });
   } catch (err) {
-    console.log(err);
-    // console.log(err.message);
-    // const errors = handleError(err);
-    // console.log(err.errors);
     res.status(404).json({ err });
   }
 };
