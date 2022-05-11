@@ -289,6 +289,7 @@ export default function Register(props) {
                       setPatient(temppatient);
                     }}
                   >
+                    <option id="select">select</option>
                     <option id="A+">A+</option>
                     <option id="A-">A-</option>
                     <option id="B+">B+</option>

@@ -136,6 +136,11 @@ const AddNewDiagnosis = (props) => {
       props.setToastShow(true);
     }
     setLoading(false);
+    props.settoastCondition({
+      status: "success",
+      message: "Prescription Added Successfully!!!",
+    });
+    props.setToastShow(true);
     navigate("/doctor/dashboard");
   };
 

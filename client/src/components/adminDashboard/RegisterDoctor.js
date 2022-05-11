@@ -82,6 +82,13 @@ export default function Register(props) {
         });
         props.setToastShow(true);
         navigate("/");
+      } else if (data.err) {
+        props.settoastCondition({
+          status: "error",
+          message: "Please enter all field properly!!!",
+        });
+        props.setToastShow(true);
+        navigate("/");
       } else {
         setLoading(false);
         props.settoastCondition({
@@ -251,6 +258,7 @@ export default function Register(props) {
                     setDoctor(tempdoctor);
                   }}
                 >
+                  <option id="select">select</option>
                   <option id="A+">A+</option>
                   <option id="A-">A-</option>
                   <option id="B+">B+</option>
