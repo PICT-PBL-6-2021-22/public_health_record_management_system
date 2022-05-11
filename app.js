@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const dbURI = process.env.DATABASE;
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 mongoose
   .connect(dbURI)
@@ -31,10 +31,18 @@ mongoose
       "Something Went Wrong! Please Try again after some time, if problem persists please contact us."
     )
   );
-app.get("/", (req, res) => res.send("server listening at 5000 port!"));
+// app.get("/", (req, res) => res.send("server listening at 5000 port!"));
 app.use(authRoutes);
 app.use(registerRoute);
 app.use(doctorRoute);
 app.use(patientRoutes);
 app.use(adminRoutes, requireAdminAuth);
 app.use(logoutRoute);
+
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
+  const path = require("path");
+  app.get("*", function (req, res) {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
