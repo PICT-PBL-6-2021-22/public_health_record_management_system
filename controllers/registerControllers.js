@@ -24,7 +24,9 @@ const handleError = (err) => {
   if (err.message.includes("patient validation failed")) {
     let errorsarray = Object.values(err.errors);
     errorsarray.forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
+      if (!properties.path.includes(".")) {
+        errors[properties.path] = properties.message;
+      }
     });
   }
   return errors;
