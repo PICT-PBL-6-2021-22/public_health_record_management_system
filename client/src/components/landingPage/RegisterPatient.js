@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import plus_logo from "../../assets/img/dashboard/add2_pbl.png";
@@ -62,6 +62,23 @@ export default function Register(props) {
         pincode: "",
       },
     },
+  });
+
+  useEffect(() => {
+    const auth = async () => {
+      const res = await fetch("/auth");
+      const data = await res.json();
+      if (data.msg === "Doctor Login Found") {
+        navigate("/doctor/dashboard");
+      }
+      if (data.msg === "Admin Login Found") {
+        navigate("/admin/dashboard");
+      }
+      if (data.msg === "Patient Login Found") {
+        navigate("/patient/dashboard");
+      }
+    };
+    auth();
   });
 
   const handleRegisterPatient = async (e) => {

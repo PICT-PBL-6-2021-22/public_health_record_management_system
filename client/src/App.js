@@ -11,7 +11,7 @@ import PatientProfile from "./components/patientDashboard/PatientProfile";
 import DoctorProfile from "./components/doctorDashboard/DoctorProfile";
 import PatientReports from "./components/patientDashboard/PatientReports";
 import AddNewDiagnosis from "./components/doctorDashboard/AddNewDiagnosis";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import PatientList from "./components/adminDashboard/PatientList";
 import DoctorList from "./components/adminDashboard/DoctorList";
 import PatientProfileSideBar from "./components/patientDashboard/PatientProfileSideBar";
@@ -22,13 +22,12 @@ import PreviewPrescription from "./components/patientDashboard/PreviewPrescripti
 import PatientReportsDoctorView from "./components/doctorDashboard/PatientReportsDoctorView";
 import PatientHistoryDoctorView from "./components/doctorDashboard/PatientHistoryDoctorView";
 import PreviewPrescriptionDoctorView from "./components/doctorDashboard/PreviewPrescriptionDoctorView";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Page_404 from "./pages/Page_404";
 
 function App() {
-  const navigate = useNavigate();
   const [healthID, setHealthID] = useState("");
   const [prescriptionID, setPrescriptionID] = useState("");
   const [toastShow, setToastShow] = useState(false);
@@ -53,23 +52,6 @@ function App() {
     });
     setToastShow(false);
   }
-
-  useEffect(() => {
-    const auth = async () => {
-      const res = await fetch("/auth");
-      const data = await res.json();
-      if (data.msg === "Doctor Login Found") {
-        navigate("/doctor/dashboard");
-      }
-      if (data.msg === "Admin Login Found") {
-        navigate("/admin/dashboard");
-      }
-      if (data.msg === "Patient Login Found") {
-        navigate("/patient/dashboard");
-      }
-    };
-    auth();
-  });
 
   return (
     <div className="bg-bgprimary flex">
