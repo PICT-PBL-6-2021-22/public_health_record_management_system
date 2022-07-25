@@ -26,28 +26,10 @@
     -->
 
     <title>Public Health Record System</title>
-    <style>
-      #loader {
-        background-image: url("https://i.stack.imgur.com/kOnzy.gif");
-        z-index: 100000;
-        background-size: cover;
-        width: 50px;
-        height: 50px;
-        margin-left: 40%;
-        margin-top: 60px;
-        display: flex;
-        /* margin: auto; */
-        position: absolute;
-      }
-      #root {
-        display: none;
-      }
-    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="loader">Loading</div>
-    <div id="root" onload="hideLoad()"></div>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -58,11 +40,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      function hideLoad() {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("root").style.display = "block";
-      }
-    </script>
   </body>
 </html>
