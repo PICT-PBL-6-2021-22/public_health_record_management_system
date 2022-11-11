@@ -1,0 +1,10 @@
+1. In project directory : public_health_record_management_system>
+    do := npm i
+
+2. do : cd client
+    Now project directory is : public_health_record_management_system\client>
+    do : npm i
+
+3. do : cd..
+
+4. 

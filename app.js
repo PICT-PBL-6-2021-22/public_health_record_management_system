@@ -27,11 +27,14 @@ mongoose
     app.listen(port);
     console.log("connected to db and listening at port 5000");
   })
-  .catch((err) =>
-    res.send(
-      "Something Went Wrong! Please Try again after some time, if problem persists please contact us."
-    )
-  );
+  .catch((err) => {
+    app.listen(port);
+    app.get("/", (req, res) => {
+      res.send(
+        "Something Went Wrong! Please Try again after some time, if problem persists please contact us."
+      );
+    });
+  });
 // app.get("/", (req, res) => res.send("server listening at 5000 port!"));
 app.use(authRoutes);
 app.use(registerRoute);
