@@ -25,7 +25,7 @@ import PreviewPrescriptionDoctorView from "./components/doctorDashboard/PreviewP
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Page_404 from "./pages/Page_404";
+import Page404 from "./pages/Page_404";
 
 function App() {
   const [healthID, setHealthID] = useState("");
@@ -43,7 +43,7 @@ function App() {
       toast.error(toastCondition.message);
     } else if (toastCondition.status === "warning") {
       toast.warn(toastCondition.message);
-    } else if (toastCondition.status == "info") {
+    } else if (toastCondition.status === "info") {
       toast.info(toastCondition.message);
     }
     settoastCondition({
@@ -267,7 +267,7 @@ function App() {
             }
           />
         </Route>
-        <Route path="*" element={<Page_404 />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
       <ToastContainer />
     </div>
