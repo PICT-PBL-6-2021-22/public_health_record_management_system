@@ -8,7 +8,6 @@ const registerRoute = require("./routes/registerRoute");
 const doctorRoute = require("./routes/doctorRoute");
 const adminRoutes = require("./routes/adminRoutes");
 const logoutRoute = require("./routes/logoutRoute");
-const { requireAdminAuth } = require("./middlewares/adminAuthMiddleware");
 const app = express();
 
 dotenv.config({ path: "./config.env" });
@@ -42,8 +41,10 @@ app.use(patientRoutes);
 app.use(adminRoutes);
 app.use(logoutRoute);
 
-app.use(express.static("client/build"));
-const path = require("path");
-app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
+  const path = require("path");
+  app.get("*", function (req, res) {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
