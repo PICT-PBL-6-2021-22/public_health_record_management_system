@@ -2,7 +2,8 @@
   "buildCommand": "npm install --prefix client && npm run build --prefix client",
   "builds": [
     {
-      "src": "./app.js"
+      "src": "./app.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
