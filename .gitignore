@@ -1,6 +1,5 @@
 node_modules
 config.env
-build
 npm-debug.log
 .nyc
 .env
