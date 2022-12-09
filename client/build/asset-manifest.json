@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f67d72d4.css",
+    "main.js": "/static/js/main.651168fd.js",
+    "static/media/admin-1.jpg": "/static/media/admin-1.f675ef725518e6279175.jpg",
+    "static/media/profile.png": "/static/media/profile.1aced5af0b153dd9990a.png",
+    "static/media/404_page.png": "/static/media/404_page.f2a2e3630112a4481256.png",
+    "static/media/vector.svg": "/static/media/vector.648762345bb57ff357b8fee2a39b727f.svg",
+    "static/media/doctor2.png": "/static/media/doctor2.5dd540c59a23b86bfd7b.png",
+    "static/media/dashboard.jpeg": "/static/media/dashboard.4c8322afa87c11efa3c3.jpeg",
+    "static/media/patient_history.jpeg": "/static/media/patient_history.20a4457c93f3194dc024.jpeg",
+    "static/media/patient2_pbl.png": "/static/media/patient2_pbl.aff9fa540265cba70634.png",
+    "static/media/add2_pbl.png": "/static/media/add2_pbl.132696644e79a1f05c3b.png",
+    "static/media/minus2_pbl.png": "/static/media/minus2_pbl.4a4bdce78261326f9d6b.png",
+    "static/media/admin-git.png": "/static/media/admin-git.22cfdd1cba253783ce51.png",
+    "static/media/admin-insta-2.png": "/static/media/admin-insta-2.bc603acad2a8cb3bd098.png",
+    "static/media/search2.png": "/static/media/search2.1d92f967297920015306.png",
+    "static/media/patient_list.png": "/static/media/patient_list.5f28f42f803ab38aa109.png",
+    "static/media/logo.png": "/static/media/logo.6431f3bbc115ef9619a2.png",
+    "static/media/admin-card-profile.png": "/static/media/admin-card-profile.f48e52371b217de9fcd6.png",
+    "static/media/delete.png": "/static/media/delete.a6fd29509719f079bfd7.png",
+    "static/media/doctor_list.png": "/static/media/doctor_list.33fff2ed574fc25c4478.png",
+    "static/media/admin-user.png": "/static/media/admin-user.33e7df0963941edbeb70.png",
+    "static/media/admin-email.png": "/static/media/admin-email.51b08bcbb5af7a861c31.png",
+    "static/media/report2_pbl.png": "/static/media/report2_pbl.6f49b8385ab20b88245a.png",
+    "index.html": "/index.html",
+    "main.f67d72d4.css.map": "/static/css/main.f67d72d4.css.map",
+    "main.651168fd.js.map": "/static/js/main.651168fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f67d72d4.css",
+    "static/js/main.651168fd.js"
+  ]
+}
