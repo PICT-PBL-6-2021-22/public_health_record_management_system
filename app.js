@@ -8,10 +8,12 @@ const registerRoute = require("./routes/registerRoute");
 const doctorRoute = require("./routes/doctorRoute");
 const adminRoutes = require("./routes/adminRoutes");
 const logoutRoute = require("./routes/logoutRoute");
+const cors = require("cors");
 const app = express();
 
 dotenv.config({ path: "./config.env" });
 
+app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
