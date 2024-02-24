@@ -16,7 +16,7 @@ Go to the project directory
   cd public_health_record_management_system
 ```
 
-Install dependencies in server
+Install dependencies in the server
 
 ```bash
   npm install
@@ -26,7 +26,7 @@ Go to the client folder
 ```bash
   cd client
 ```
-Install dependencies in client
+Install dependencies in the client
 
 ```bash
   npm install
@@ -38,7 +38,7 @@ Start the client react project
   npm run start
 ```
 
-Come back to server
+Come back to the server
 
 ```bash
   cd ..
@@ -60,7 +60,7 @@ To run this project, you will need to add the following environment variables to
 
 `SECRET_KEY`
 
-DATABASE contains the dbURI of MongoDB connections and SECRET_KEY contains Secret key for signing and verifying Jason Web Tokens (JWT)
+DATABASE contains the dbURI of MongoDB connections and SECRET_KEY contains the Secret key for signing and verifying JSON Web Tokens (JWT)
 
 
 ## Authors
