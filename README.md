@@ -68,3 +68,4 @@ DATABASE contains the dbURI of MongoDB connections and SECRET_KEY contains the S
 - [@rohitvpatil0810](https://www.github.com/rohitvpaitl0810)
 - [@jayesh1602](https://www.github.com/jayesh1602)
 
+Note: The database credentials and secret keys included in this repository were sample values used for demonstration purposes only. They have been deleted, and all passwords for the original services have been rotated. Please generate your own credentials and use your own secrets when deploying or testing this project.
